@@ -3,12 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="app-version" content="1.7">
+<meta name="app-version" content="2.1">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Scaff">
 <meta name="theme-color" content="#EFE8DC">
-<link rel="apple-touch-icon" href="data:image/png;base64,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">
-<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&display=swap" rel="stylesheet">
 <title>Scaff</title>
@@ -181,7 +183,7 @@ const today=()=>{const d=new Date();return new Date(d.getFullYear(),d.getMonth()
 const addDays=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x;};
 const monday=d=>{const x=new Date(d.getFullYear(),d.getMonth(),d.getDate());x.setDate(x.getDate()-((x.getDay()+6)%7));return x;};
 function weekNo(d){const t=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));const n=t.getUTCDay()||7;t.setUTCDate(t.getUTCDate()+4-n);const y=new Date(Date.UTC(t.getUTCFullYear(),0,1));return Math.ceil(((t-y)/864e5+1)/7);}
-const fmtShort=d=>d.toLocaleDateString("nb-NO",{day:"numeric",month:"short"}).replace(".","");
+const fmtShort=d=>d.toLocaleDateString(LOC(),{day:"numeric",month:"short"}).replace(".","");
 const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
 const kr=n=>Math.round(n).toLocaleString("nb-NO")+" kr";
@@ -189,6 +191,208 @@ const hm=min=>{min=Math.round(min);const h=Math.floor(min/60),m=min%60;return h?
 const COLORS=["#FF5A36","#3557E8","#1F9D63","#E9A800","#9B4DE0","#E0457B","#0FA3B1","#7A6A58"];
 const subj=id=>S.subjects.find(s=>s.id===id)||{name:"Ukjent fag",color:"#999"};
 const pick=a=>a[Math.floor(Math.random()*a.length)];
+
+/* ---------- språk / language ---------- */
+if(!S.settings.lang){S.settings.lang=(S.sessions.length||Object.keys(S.days).length||S.subjects.length)?"nb":(/^(nb|nn|no)\b/i.test(navigator.language||"")?"nb":"en");save();}
+const LANG=()=>S.settings.lang||"nb";
+const LOC=()=>LANG()==="en"?"en-GB":"nb-NO";
+document.documentElement.lang=LANG()==="en"?"en":"nb";
+const EN={
+"(valgfritt)":"(optional)","Alle kort":"All cards","Alt du ellers ville glemt.":"Everything you'd otherwise forget.",
+"Alt lagres bare på denne telefonen. Ingen konto, ingen sporing.":"Everything stays on this phone. No account, no tracking.",
+"Alt ligger bare på denne telefonen. Ta en kopi før du bytter telefon.":"Everything lives on this phone only. Make a backup before you switch phones.",
+"Angre":"Undo","Annenhver uke":"Every other week","Annet":"Other","Appen gir ikke medisinske råd.":"The app does not give medical advice.",
+"Appen kan ikke sende meldinger selv. Legg inn en fast påminnelse i kalenderen, så får du et varsel hver søndag kl. 18.":"The app can't send notifications by itself. Add a recurring reminder to your calendar and you'll get an alert every Sunday at 6 pm.",
+"Automatisk":"Automatic","Avbryt":"Cancel","Avslutt":"Finish","Ballsport":"Ball sports","Banan eller appelsinjuice":"Banana or orange juice",
+"Basert på de siste åtte ukene. Sammenheng er ikke det samme som årsak, men det er et godt sted å begynne.":"Based on the last eight weeks. Correlation isn't causation, but it's a good place to start.",
+"Bein":"Legs","Biceps":"Biceps","Bra jobba.":"Well done.","Brukt på byen (drikke, taxi, kebab kl. 03)":"Spent on a night out (drinks, taxi, the 3 am kebab)",
+"Bryst":"Chest","Dagen derpå":"The morning after","Dagens mål":"Today's goals",
+"Denne delen handler om alkohol og røyk, og er bare for deg som er over 18.":"This section covers alcohol and smoking, and is only for those over 18.",
+"Denne uka":"This week","Det beste i dag":"The best part of today","Det dataene dine viser":"What your data shows",
+"Det fikser ikke bakfyllen, men det fikser humøret.":"It won't fix the hangover, but it fixes the mood.",
+"Dette tar jeg med til i morgen":"What I'm taking into tomorrow","Distanse (km)":"Distance (km)","Drakk du nok vann?":"Did you drink enough water?",
+"Dårlig":"Poor","Elendig":"Terrible","En god dag er som en god dress: den sitter fordi den er planlagt.":"A good day is like a good suit: it fits because it was planned.",
+"En lærdom, en ting å gjøre annerledes":"A lesson, one thing to do differently","Endre fag":"Edit subjects","Endre økt":"Edit session",
+"Energi i kveld":"Energy tonight","Energi nå":"Energy now","Energien om kvelden var":"Your evening energy was",
+"Etter gode netter nådde du":"After good nights you hit","Etter gode netter var humøret":"After good nights your mood was",
+"F.eks. Matte R1":"E.g. Calculus","F.eks. god pump i dag":"E.g. great pump today","F.eks. kapittel 4, derivasjon":"E.g. chapter 4, derivatives",
+"F.eks. lese kapittel 5":"E.g. read chapter 5","F.eks. ringe mamma":"E.g. call mum","F.eks. tung motbakke":"E.g. brutal uphill","Fag":"Subject",
+"Fag denne uka":"Subjects this week","Fagene dine":"Your subjects","Farge":"Colour","Ferdig":"Done","Ferdig for nå. Vi ses i kveld.":"Done for now. See you tonight.",
+"Ferdig, lagre økta":"Done, save session","Fin":"Fine","Fjern":"Remove","Fjern mål":"Remove goal","Fjern øvelse":"Remove exercise","Flere":"More",
+"Flytt det uferdige til i morgen":"Move what's unfinished to tomorrow","Folk":"People","For lite":"Too little","Forrige dag":"Previous day","Forslag":"Suggestions",
+"Frisk luft og en rolig tur.":"Fresh air and a gentle walk.","Full":"Full","Færre":"Fewer","Gjerne noe salt ved siden av, som buljong eller suppe.":"Ideally with something salty, like broth or soup.",
+"Gjort. Stilig.":"Done. Stylish.","Gjør du dette hver helg, blir det":"Do this every weekend and it adds up to",
+"Glemte du tidtakeren? Skjer de beste.":"Forgot the timer? Happens to the best of us.","God":"Good","God kveld":"Good evening","God morgen":"Good morning",
+"Grei":"Okay","Greit":"Okay","Gå 5 km ute i dag":"Walk 5 km outside today","Helgen kostet":"The weekend cost","Helgerapporten · 18+":"Weekend report · 18+",
+"Helgerapporten":"Weekend report","Helkropp":"Full body","Hent inn kopi":"Restore backup","Hjemme":"Home","Hode":"Mind",
+"Hold det gående: 30 minutter bevegelse":"Keep it going: 30 minutes of movement","Hovedmeny":"Main menu","Humøret i dag":"Mood today","Huske":"Remember",
+"Huske i dag":"Remember today","Hva leste eller jobbet du med?":"What did you read or work on?","Hva trente du?":"What did you train?",
+"Hva vil du ha fått gjort når dagen er over? Tre ting holder.":"What do you want done by the end of the day? Three things is plenty.",
+"Hver linje blir et kort under Pugg.":"Each line becomes a card under Drill.","Hver måned":"Every month","Hver uke":"Every week",
+"Hvor mange dager drakk du denne uka?":"How many days did you drink this week?","Hvordan sov du?":"How did you sleep?","Hvordan var uka?":"How was the week?",
+"Hvordan var økta?":"How was the session?","Høyt":"High","I dag":"Today","I morgen":"Tomorrow","Ikke alt, men noe. Det teller.":"Not everything, but something. It counts.",
+"Ikke som straff. Fordi frisk luft er gratis, og du kommer til å føle deg bedre etterpå.":"Not as punishment. Because fresh air is free, and you'll feel better afterwards.",
+"Ingen fasit her. Forklar det høyt for deg selv, og vær ærlig.":"No answer here. Explain it out loud to yourself, and be honest.",
+"Ingen kalorier, ingen vekt. Bare magefølelsen.":"No calories, no scales. Just your gut feeling.",
+"Ingen morgen- eller kveldslogg denne uka. Fanen I dag tar to minutter.":"No morning or evening log this week. The Today tab takes two minutes.",
+"Ingen mål satt i morges. Neste gang: trykk på Morgen først.":"No goals set this morning. Next time: tap Morning first.",
+"Ingen økt logget. Hviledag teller også, så lenge den er planlagt.":"No session logged. Rest days count too, as long as they're planned.",
+"Ingen økter logget denne uka.":"No sessions logged this week.","Ingenting igjen i dag. Stilig.":"Nothing left today. Stylish.","Innstillinger":"Settings",
+"Jeg er over 18":"I'm over 18","Kaos":"Chaos","Kg":"Kg","Kjerne":"Core","Klokken går. Lykke til.":"The clock is running. Good luck.","Kom i gang":"Get started",
+"Kroppen i dag":"Body today","Kunne det":"Knew it","Lagre":"Save","Lagre endringer":"Save changes","Lagre kopi":"Save backup","Lagre økt":"Save session",
+"Lav":"Low","Lavt":"Low","Legg på hjemskjermen":"Add to home screen","Legg til":"Add",
+"Legg til et fag og logg en økt med punkter, så dukker kortene opp her.":"Add a subject and log a session with notes, and your cards will show up here.",
+"Legg til fag":"Add subject","Legg til fagene dine først. Matte, norsk, historie, lappen, hva som helst.":"Add your subjects first. Maths, history, your driving theory, anything.",
+"Legg til i kalenderen":"Add to calendar","Lettere enn sist":"Lighter than last time","Logg en økt":"Log a session","Logg i etterkant":"Log afterwards",
+"Logg økt":"Log session","Lunsj, trening, et program, en person …":"Lunch, a workout, a show, a person …","Lyst":"Light","Løping":"Running",
+"Mer":"More","Mer enn nok":"More than enough","Merk som gjort":"Mark as done","Middels":"Medium","Minutter":"Minutes","Muskelgrupper":"Muscle groups",
+"Mørkt":"Dark","Navn":"Name","Neste dag":"Next day","Neste →":"Next →","Nok":"Enough","Notat":"Note","Notatene dine, gjort om til kort.":"Your notes, turned into cards.",
+"Nudelsuppe, ramen, eggerøre på toast. Mange kokker sverger til noe varmt og krydret og noe iskaldt å drikke. Anthony Bourdain var en av dem.":"Noodle soup, ramen, scrambled eggs on toast. Plenty of chefs swear by something hot and spicy with an ice-cold drink. Anthony Bourdain was one of them.",
+"Ny ting":"New item","Ny versjon er klar.":"A new version is ready.","Nytt fag":"New subject","Nytt kort":"New card","Oppdater":"Update","Passe":"About right",
+"Penger":"Money","Planen trenger ikke være perfekt. Den trenger å finnes.":"The plan doesn't need to be perfect. It needs to exist.",
+"Pris per røykpakke (20 stk)":"Price per pack of cigarettes (20)","Punkter å huske":"Points to remember","På dager du trente, var humøret":"On days you trained, your mood was",
+"Pågående økt":"Session in progress","Påminnelse hver søndag":"Reminder every Sunday","Reps":"Reps","Rolig helg? Da har du overskudd. Bruk det.":"Quiet weekend? Then you've got energy to spare. Use it.",
+"Rygg":"Back","Rå":"Beast","Seig":"Tough","Senere":"Later","Sett":"Sets","Sigaretter i helgen":"Cigarettes this weekend","Sikkerhetskopi":"Backup",
+"Siste økter":"Recent sessions","Sjekk av det du fikk til. Resten flytter vi.":"Tick off what you got done. We'll move the rest.","Skjul 18+-delen":"Hide the 18+ section",
+"Skjønner":"Got it","Skuldre":"Shoulders","Slett alt":"Delete everything","Slett fag":"Delete subject","Slett kort":"Delete card","Slett økt":"Delete session",
+"Sletter du et fag, forsvinner øktene og kortene i faget også.":"Deleting a subject also deletes its sessions and cards.","Sofaen er lov i dag.":"The sofa is allowed today.",
+"Som sist":"Same as last time","Sov.":"Sleep.","Spiste du nok?":"Did you eat enough?","Spørsmål eller begrep":"Question or term","Start en økt":"Start a session",
+"Start pugging":"Start drilling","Start tidtaker":"Start timer","Stil":"Style","Stilig.":"Stylish.","Stort eller lite, det teller likt":"Big or small, it counts the same",
+"Stressnivå":"Stress level","Struktur, med stil.":"Structure, with style.","Studie":"Study","Studietid per uke":"Study time per week",
+"Studietid per uke. Oransje er denne uka.":"Study time per week. The highlighted bar is this week.","Styrke":"Strength","Supert":"Great",
+"Svar eller forklaring":"Answer or explanation","Svømming":"Swimming","Sykling":"Cycling","Søndag":"Sunday","Søndagspåminnelse":"Sunday reminder",
+"Søndagsrapporten":"The Sunday Report","Telefonen er nå en bok. Ikke åpne TikTok.":"Your phone is a book now. Don't open TikTok.","Tid (min)":"Time (min)",
+"Tom":"Empty","Topp":"Top","Tre mål. Ikke tolv. Du er ikke en to-do-liste.":"Three goals. Not twelve. You're not a to-do list.","Trening":"Training",
+"Treningsloggen for hodet.":"The training log for your mind.","Triceps":"Triceps","Trykk på en økt for å endre den.":"Tap a session to edit it.","Tung":"Heavy",
+"Tyngre enn sist":"Heavier than last time","Uka di":"Your week","Ukas dager":"The week's days","Ukas høydepunkter":"Highlights of the week",
+"Ukas studier":"Study this week","Ukas trening":"Training this week","Ukas utfordring":"This week's challenge","Utseende":"Appearance",
+"Vann, og mer vann.":"Water, and more water.","Varm, salt og litt sterk mat.":"Hot, salty and a little spicy.","Vektene sammenlignet med sist":"Weights compared to last time",
+"Vis svar":"Show answer","Vær forsiktig med smertestillende etter mye alkohol, spesielt paracetamol. Spør på apoteket hvis du er usikker.":"Be careful with painkillers after heavy drinking, especially paracetamol. Ask a pharmacist if you're unsure.",
+"Zen":"Zen","av 5. Andre dager":"out of 5. Other days","av målene dine. Etter dårlige":"of your goals. After poor ones","dager på rad":"days in a row",
+"ellers.":"otherwise.","en helgetur til Barcelona":"weekends in Barcelona","en kinobillett":"cinema tickets","en pizza levert på døra":"delivered pizzas",
+"en skreddersydd dress":"made-to-measure suits","et par gode loafers":"pairs of good loafers","for kroppen, som har vært gjennom en del.":"for a body that's been through a lot.",
+"ganger tyngre":"times heavier","humør i snitt":"average mood","i året. Det er:":"a year. That's:","igjen":"left","kan du":"known","km":"km","kort":"cards",
+"morgen + kveld":"morning + evening","mål nådd":"goals hit","på treningsdager, mot":"on training days, versus","studert":"studied","Åpne Huske":"Open Remember",
+"Åpne i Chrome, trykk på de tre prikkene og velg «Legg til på startskjermen».":"Open in Chrome, tap the three dots and choose “Add to Home screen”.",
+"Åpne i Safari, trykk på delingsknappen (firkant med pil opp) og velg «Legg til på Hjem-skjerm».":"Open in Safari, tap the share button (square with an arrow) and choose “Add to Home Screen”.",
+"Ærend":"Errands","Ærlig talt: det finnes ingen kur. Bare tid. Men dette gjør ventetiden bedre.":"Honestly: there's no cure. Only time. But this makes the wait better.",
+"Én gang":"Once","Én ting jeg gleder meg til":"One thing I'm looking forward to",
+"Én ting per linje. Skriv «begrep: forklaring», så blir det pugge-kort automatisk.":"One thing per line. Write “term: explanation” and it becomes a flashcard automatically.",
+"Fotosyntese: planter lager sukker av lys, CO2 og vann":"Photosynthesis: plants make sugar from light, CO2 and water",
+"Én ting per linje. Skriv «begrep: forklaring», så blir det pugge-kort automatisk.\nFotosyntese: planter lager sukker av lys, CO2 og vann":"One thing per line. Write “term: explanation” and it becomes a flashcard automatically.\nPhotosynthesis: plants make sugar from light, CO2 and water",
+"Øv mer":"Practise more","Øvelse, f.eks. Knebøy":"Exercise, e.g. Squat","Øvelser":"Exercises","Øvelse":"Exercise",
+"Øverst morgen, i midten kveld, nederst trening. Trykk på en dag for å åpne den.":"Top: morning, middle: evening, bottom: training. Tap a day to open it.",
+"økter":"sessions","← Forrige":"← Previous","↻ betyr at den kommer tilbake av seg selv. Legges til denne uka.":"↻ means it comes back by itself. Added for this week.",
+"↻ betyr at den kommer tilbake av seg selv. Legges til i dag.":"↻ means it comes back by itself. Added for today.",
+"↻ betyr at den kommer tilbake av seg selv. Legges til i morgen.":"↻ means it comes back by itself. Added for tomorrow.",
+"⏱ Økter":"⏱ Sessions","⏱ Økter ●":"⏱ Sessions ●","☀ Morgen":"☀ Morning","☀ Morgen ✓":"☀ Morning ✓","★ Nye rekorder:":"★ New records:","★ Rekord":"★ Record",
+"☾ Kveld":"☾ Evening","☾ Kveld ✓":"☾ Evening ✓","❐ Pugg":"❐ Drill","Pugg":"Drill","Morgen":"Morning","Kveld":"Evening",
+"↑ Tyngre enn sist":"↑ Heavier than last time","→ Som sist":"→ Same as last time","↓ Lettere enn sist":"↓ Lighter than last time",
+"Ma":"Mo","Ti":"Tu","On":"We","To":"Th","Fr":"Fr","Lø":"Sa","Sø":"Su","Android:":"Android:","iPhone:":"iPhone:",
+/* fra koden */
+"Ab wheel":"Ab wheel","Alle mål nådd. Dagen er forseglet.":"All goals hit. The day is sealed.","Alle mål nådd. Elegant.":"All goals hit. Elegant.",
+"Alt er slettet":"Everything is deleted","Alt herfra er allerede på lista.":"Everything from here is already on your list.","Alt husket for i dag. Stilig.":"All remembered for today. Stylish.",
+"Apoteket":"Pharmacy","Avbryte økta uten å lagre?":"Cancel the session without saving?","Beinpress":"Leg press","Benkpress":"Bench press","Betale regninger":"Pay bills",
+"Bicepscurl":"Biceps curl","Burpees":"Burpees","Bøkene venter. De er tålmodige, men ikke uendelig.":"The books are waiting. They're patient, but not endlessly.","Clean":"Clean",
+"Dagen er over. Vær ærlig, men snill.":"The day is done. Be honest, but kind.","Det der ser ikke ut som en kopi":"That doesn't look like a backup",
+"Det som ligger i appen nå, blir erstattet.":"What's in the app now will be replaced.","Dette er gratis trening for hodet.":"This is free training for your mind.","Dips":"Dips",
+"Du er i sonen. Bli der.":"You're in the zone. Stay there.","Eller lim inn teksten her":"Or paste the text here","Ett til? Greit, men ikke mer.":"One more? Fine, but that's it.",
+"Face pulls":"Face pulls","Fag, økter, kort og søndagsrapporter forsvinner fra denne telefonen. Det kan ikke angres.":"Subjects, sessions, cards and Sunday reports will be removed from this phone. This can't be undone.",
+"Faget trenger et navn":"The subject needs a name","Fant ingen data i kopien":"No data found in the backup","Fem mål er taket. Du er et menneske, ikke en fabrikk.":"Five goals is the limit. You're a person, not a factory.",
+"Ferdig med bunken. Hjernen din er stolt.":"Deck finished. Your brain is proud.","Fikk ikke lastet ned filen":"Couldn't download the file","Flyes":"Flyes",
+"Fokus. Snapene overlever uten deg.":"Focus. Your Snaps will survive without you.","Fransk press":"Skull crushers",
+"Første gang du logger dette. Nå har du et utgangspunkt å slå.":"First time logging this. Now you have something to beat.",
+"God skreddersøm tar tid. Det gjør kunnskap også.":"Good tailoring takes time. So does knowledge.","Gå en tur på 30 minutter":"Take a 30-minute walk",
+"Gå tur uten musikk":"Walk without music","Hammercurl":"Hammer curl","Handle mat":"Buy groceries","Hantelpress":"Dumbbell press","Hengende beinhev":"Hanging leg raises",
+"Hent inn":"Restore","Hente pakke":"Pick up parcel","Hjernen jobber. Ikke forstyrr.":"Brain at work. Do not disturb.",
+"Ingen kort ennå. Skriv punkter når du lagrer en økt, eller legg til et kort her.":"No cards yet. Write notes when you save a session, or add a card here.",
+"Ingen tydelige sammenhenger ennå. Det er også nyttig å vite.":"No clear patterns yet. That's useful to know too.",
+"Ingen økter ennå. Starten er det tyngste, så lover vi at det blir lettere.":"No sessions yet. Starting is the hardest part. It gets easier, we promise.",
+"Ingenting å huske i dag. Sjelden luksus.":"Nothing to remember today. A rare luxury.","Kettlebell swing":"Kettlebell swing","Klippe håret":"Get a haircut","Knebøy":"Squat",
+"Kopien er hentet inn":"Backup restored","Kortet er lagt til":"Card added","Kortet trenger et spørsmål":"The card needs a question",
+"Kveldsrapport. Ingen dommer i salen.":"Evening report. No judge in the room.","Lagret. Fremtidige deg sier takk.":"Saved. Future you says thanks.","Leg curl":"Leg curl",
+"Leg extension":"Leg extension","Les 10 sider":"Read 10 pages","Levere dressen til rens":"Take the suit to the cleaners","Markløft":"Deadlift","Nedtrekk":"Lat pulldown",
+"Null minutter. Det er bare én vei herfra, og det er opp.":"Zero minutes. There's only one way from here, and it's up.",
+"Ny dag, blanke ark. Ikke søl på dem med en gang.":"New day, clean sheet. Try not to spill on it straight away.","Pante flasker":"Return bottles","Planke":"Plank",
+"Preacher curl":"Preacher curl","Pull-ups":"Pull-ups","Pusse skoene":"Polish your shoes","Ringe mamma":"Call mum","Roing":"Rows","Rumensk markløft":"Romanian deadlift",
+"Se hvordan uka di ble.":"See how your week went.","Sende bursdagshilsen":"Send a birthday message","Si opp et abonnement du ikke bruker":"Cancel a subscription you don't use",
+"Sidehev":"Lateral raises","Sjekke kontoen":"Check your account","Skifte sengetøy":"Change the bed sheets","Skriv et mål først":"Write a goal first",
+"Skriv inn antall minutter":"Enter the number of minutes","Skriv noe å huske først":"Write something to remember first","Skrå benkpress":"Incline bench press",
+"Skulderpress":"Shoulder press","Slette alt?":"Delete everything?","Slette faget med alle økter og kort?":"Delete the subject with all its sessions and cards?",
+"Stryke skjorter for uka":"Iron shirts for the week","Støvsuge":"Vacuum","Svare på meldinger":"Reply to messages","Søndagsrapporten er klar.":"The Sunday Report is ready.",
+"Søndagsrapporten er klar":"The Sunday Report is ready","Søndagsrapporten i Scaff":"The Sunday Report in Scaff","Se hvordan uka di ble:":"See how your week went:",
+"Ta kontakt med en gammel venn":"Reach out to an old friend","Ta ut søppel":"Take out the rubbish","Telefonen bort kl. 23":"Phone away at 11 pm","Til i dag":"Back to today",
+"Tilbake i tid":"Back in time","Triceps pushdown":"Triceps pushdown","Tyngre enn sist. Det er fremgang.":"Heavier than last time. That's progress.","Ukjent fag":"Unknown subject",
+"Under ett minutt teller dessverre ikke":"Under a minute doesn't count, sorry","Utfall":"Lunges","Vanne plantene":"Water the plants","Vaske klær":"Do the laundry",
+"Velg en fil eller lim inn teksten":"Choose a file or paste the text","Velg fil":"Choose file","Åpne":"Open","Åpne filen for å legge den i kalenderen":"Open the file to add it to your calendar",
+"Én kveld ute, én tur ute. Balanse.":"One night out, one walk out. Balance.","Økt lagret. Stilig.":"Session saved. Stylish.","Økta er oppdatert.":"Session updated.",
+"Filen lastes ned.":"The file is downloading.","Kom ingen fil? Merk og kopier teksten under, og send den til deg selv.":"No file? Select and copy the text below and send it to yourself.",
+"Språk":"Language","lettere":"lighter","tyngre":"heavier","som før":"same as before","Tung ":"Heavy","Sist":"Last"
+};
+const T=t=>trCore(t);
+const ENRE=[
+ [/^\+ (.+)$/,(m,a)=>"+ "+T(a)],
+ [/^↻ (.+)$/,(m,a)=>"↻ "+T(a)],
+ [/^(\d+) t (\d+) min$/,(m,a,b)=>`${a} h ${b} min`],
+ [/^u(\d+)$/,(m,a)=>"w"+a],
+ [/^Uke (\d+)$/,(m,a)=>"Week "+a],
+ [/^(.+) til (.+)$/,(m,a,b)=>/\d/.test(a)&&/\d/.test(b)?`${T(a)} to ${T(b)}`:m],
+ [/^(\d+) kort igjen$/,(m,a)=>`${a} card${a==="1"?"":"s"} left`],
+ [/^(.+) med (.+)\. Hva fikk du gjort\?$/,(m,a,b)=>`${T(a)} of ${b}. What did you get done?`],
+ [/^(.+) (mindre|mer) enn forrige uke\. (.+)$/,(m,a,b,c)=>`${T(a)} ${b==="mer"?"more":"less"} than last week. ${b==="mer"?"Keep it up.":"The week isn't over yet."}`],
+ [/^(.+) (lenger|kortere) enn snittet ditt$/,(m,a,b)=>`${T(a)} ${b==="lenger"?"longer":"shorter"} than your average`],
+ [/^første økt i faget$/,()=>"first session in this subject"],
+ [/^([\d\s,.]+) stk$/,(m,a)=>a],
+ [/^(\d+) av (\d+)$/,(m,a,b)=>`${a} of ${b}`],
+ [/^(\d+) av (\d+) dager$/,(m,a,b)=>`${a} of ${b} days`],
+ [/^Fra (.+)$/,(m,a)=>"Since "+T(a)],
+ [/^Sist: (.+)$/,(m,a)=>"Last: "+T(a)],
+ [/^Sist (.+?): (.+)$/,(m,a,b)=>`Last ${a}: ${T(b)}`],
+ [/^Rekord: (.+)$/,(m,a)=>"Record: "+a],
+ [/^Økta: (.+)$/,(m,a)=>"Session: "+T(a)],
+ [/^(.+) km på (\d+) min$/,(m,a,b)=>`${T(a)} km in ${b} min`],
+ [/^(.+) per km$/,(m,a)=>`${a} per km`],
+ [/^([↑↓]) (\d+) s (raskere|tregere) enn sist$/,(m,a,b,c)=>`${a} ${b} s ${c==="raskere"?"faster":"slower"} than last time`],
+ [/^→ likt som sist$/,()=>"→ same as last time"],
+ [/^Muskelgrupper: (.+)\.$/,(m,a)=>"Muscle groups: "+a.split(", ").map(x=>{const q=x.match(/^(.+?)( ×\d+)?$/);return T(q[1])+(q[2]||"");}).join(", ")+"."],
+ [/^Nok vann (\d+) av (\d+) dager\. Spiste passe eller mer (\d+) av (\d+) dager\.$/,(m,a,b,c,d)=>`Enough water ${a} of ${b} days. Ate about right or more ${c} of ${d} days.`],
+ [/^Du har fylt ut (\d+) kvelder\. (.+)$/,(m,a)=>`You've filled in ${a} evenings. After a couple of weeks, the patterns start showing up here.`],
+ [/^(\d+) økter(\.?)(.*)$/,(m,a,b,c)=>`${a} session${a==="1"?"":"s"}${b}${c?" "+T(c.trim()):""}`],
+ [/^Mest tid på (.+?)\.(?: (.+))?$/,(m,a,b)=>`Most time on ${a}.${b?" "+T(b):""}`],
+ [/^(Ned|Opp) (.+) fra uka før\.$/,(m,a,b)=>`${a==="Opp"?"Up":"Down"} ${T(b)} from the week before.`],
+ [/^Lagret, og (\d+) nye pugge-kort$/,(m,a)=>`Saved, plus ${a} new flashcard${a==="1"?"":"s"}`],
+ [/^«(.+)» er lagt til$/,(m,a)=>`“${T(a)}” added`],
+ [/^(.+) er lagt til$/,(m,a)=>`${a} added`],
+ [/^(\d+) mål flyttet til i morgen$/,(m,a)=>`${a} goal${a==="1"?"":"s"} moved to tomorrow`],
+ [/^Ny rekord i (.+)\. Stilig\.$/,(m,a)=>`New record in ${a.split(" og ").map(T).join(" and ")}. Stylish.`],
+ [/^Og (\d+) til\.$/,(m,a)=>`And ${a} more.`],
+ [/^Null av (\d+)\. Morgendagen er en ny sjanse\.$/,(m,a)=>`Zero of ${a}. Tomorrow is a new chance.`],
+ [/^(.+?) ([\d,.]+ kg)$/,(m,a,b)=>`${T(a)} ${b}`],
+ [/^Du studerte$/,()=>"You studied"],[/^på treningsdager, og$/,()=>"on training days, and"],[/^Dager du drakk nok vann, var energien$/,()=>"On days you drank enough water, your energy was"],
+ [/^\. Dager med for lite$/,()=>". Days with too little"],[/^Humøret var$/,()=>"Your mood was"],[/^på dager du studerte, og$/,()=>"on days you studied, and"],
+ [/^\. Etter dårlige netter$/,()=>". After poor nights"],[/^Etter dårlige netter$/,()=>"After poor nights"],[/^mot$/,()=>"versus"],
+ [/^Gjort i dag$/,()=>"Done today"],
+ [/^Priser er omtrentlige\. Røyk regnes med (.+) per pakke, som du kan endre i innstillinger\.$/,(m,a)=>`Prices are approximate. Cigarettes are counted at ${a} per pack, which you can change in settings.`],[/^Ukas tips$/,()=>"Tip of the week"]
+];
+function trCore(t){
+  if(EN[t]!==undefined)return dec(EN[t]);
+  for(const [re,f] of ENRE){const m=t.match(re);if(m){const r=f(...m);if(r!==t)return dec(r);}}
+  if(t.includes(" · ")){return t.split(" · ").map(trCore).join(" · ");}
+  if(t.includes(", ")){const p=t.split(", "),q=p.map(trCore);if(q.some((x,i)=>x!==p[i]))return q.join(", ");}
+  return /^[\d\s,.%+\/−×:-]+(kr|kg|km|min|%)?$/.test(t)?dec(t):t;
+}
+function dec(s){return LANG()==="en"?s.replace(/(\d),(\d)/g,"$1.$2"):s;}
+function tr(s){if(LANG()!=="en"||!s)return s;const t=s.trim();if(!t)return s;const r=trCore(t);return r===t?s:s.replace(t,r);}
+function trNode(root){if(LANG()!=="en"||!root)return;
+  const txt=n=>{const p=n.parentElement;if(!p||p.closest("textarea,script,style,datalist"))return;const v=tr(n.nodeValue);if(v!==n.nodeValue)n.nodeValue=v;};
+  const att=e=>["placeholder","aria-label","title"].forEach(a=>{const v=e.getAttribute&&e.getAttribute(a);if(v){const t=tr(v);if(t!==v)e.setAttribute(a,t);}});
+  if(root.nodeType===3){txt(root);return;}
+  if(root.nodeType!==1)return;
+  att(root);root.querySelectorAll("[placeholder],[aria-label],[title]").forEach(att);
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;const L=[];while(n=w.nextNode())L.push(n);L.forEach(txt);}
+new MutationObserver(ms=>{if(LANG()!=="en")return;ms.forEach(m=>m.addedNodes.forEach(trNode));}).observe(document.body,{childList:true,subtree:true});
+trNode(document.body);
+
 
 const U={view:"today",spart:"log",tdue:"today",trep:null,scat:"Hjemme",day:today(),part:null,week:monday(today()),drill:null,drillSub:null,show:false};
 
@@ -257,7 +461,7 @@ function wLine(w,dayKey){
   return {main,cmp};}
 function trainCard(k,d){const ws=d.workouts||[];
   return `<div class="card"><h2>Trening</h2>${ws.length?`<ul class="list">${ws.map(w=>{const L=wLine(w,k);
-    return `<li class="row between" style="flex-wrap:nowrap;align-items:flex-start"><button data-act="wedit" data-v="${w.id}" aria-label="Endre økt" style="border:none;background:none;padding:0;text-align:left;flex:1;cursor:pointer"><b>${esc(L.main)}</b><div class="small muted">${[w.feel?"Økta: "+FEEL[w.feel-1]:"",L.cmp].filter(Boolean).join(" · ")}</div>${w.note?`<div class="small" style="margin-top:2px">${esc(w.note)}</div>`:""}</button><button class="x" data-act="wdel" data-v="${w.id}" aria-label="Slett økt">×</button></li>`;}).join("")}</ul>`
+    return `<li class="row between" style="flex-wrap:nowrap;align-items:flex-start"><button data-act="wedit" data-v="${w.id}" aria-label="Endre økt" style="border:none;background:none;padding:0;text-align:left;flex:1;cursor:pointer"><b>${esc(L.main)}</b><div class="small muted">${[w.feel?"Økta: "+FEEL[w.feel-1]:"",L.cmp].filter(Boolean).join(" · ")}</div>${(w.ex||[]).map(e=>`<div class="small" style="margin-top:3px">${esc(e.n)} · ${exTxt(e)}${isPR(e,w,k)?` <b style="color:var(--wine)">★ Rekord</b>`:""}</div>`).join("")}${w.note?`<div class="small" style="margin-top:2px">${esc(w.note)}</div>`:""}</button><button class="x" data-act="wdel" data-v="${w.id}" aria-label="Slett økt">×</button></li>`;}).join("")}</ul>`
     :`<p class="hint" style="margin-top:0">Ingen økt logget. Hviledag teller også, så lenge den er planlagt.</p>`}
     ${ws.length?`<p class="hint">Trykk på en økt for å endre den.</p>`:""}<button class="btn ${ws.length?"ghost":"acc"} small" style="margin-top:12px" data-act="wnew">+ Logg økt</button></div>`;}
 function bodyCard(d){const ch=(f,labels)=>`<div class="chips">${labels.map((l,i)=>`<button class="chip ${d[f]===i?"on":""}" data-act="dpick" data-f="${f}" data-v="${i}">${l}</button>`).join("")}</div>`;
@@ -272,8 +476,54 @@ function wForm(){const w=U.wk,k=iso(U.day),ready=w.type&&(w.type!=="Styrke"||w.g
   ${w.type?`<label class="f">Hvordan var økta?</label><div class="scale">${FEEL.map((l,i)=>`<button class="${w.feel===i+1?"on":""}" data-act="wfeel" data-v="${i+1}" title="${l}">${i+1}</button>`).join("")}</div><div class="row between small muted" style="margin-top:4px"><span>${FEEL[0]}</span><span>${w.feel?FEEL[w.feel-1]:""}</span><span>${FEEL[4]}</span></div>`:""}
   ${w.type==="Styrke"?`<label class="f">Vektene sammenlignet med sist</label><div class="chips">${VS.map(([v,l])=>`<button class="chip ${w.vs===v?"on":""}" data-act="wvs" data-v="${v}">${l}</button>`).join("")}</div>`:""}
   ${pv?`<p class="hint">Sist: ${fmtShort(parse(pv.day))} · ${esc(wLine(pv,pv.day).main)}${pv.vs?", "+{lettere:"lettere",likt:"som før",tyngre:"tyngre"}[pv.vs]:""}${pv.note?`. «${esc(pv.note)}»`:""}</p>`:(ready?`<p class="hint">Første gang du logger dette. Nå har du et utgangspunkt å slå.</p>`:"")}
-  ${w.type?`<label class="f">Notat</label><input type="text" data-wbind="note" value="${esc(w.note||"")}" placeholder="${w.type==="Styrke"?"F.eks. knebøy 80 kg x 5":"F.eks. tung motbakke"}">`:""}
+  ${w.type==="Styrke"?exRows(w,k):""}
+  ${w.type?`<label class="f">Notat</label><input type="text" data-wbind="note" value="${esc(w.note||"")}" placeholder="${w.type==="Styrke"?"F.eks. god pump i dag":"F.eks. tung motbakke"}">`:""}
   <div class="row" style="margin-top:16px"><button class="btn acc" data-act="wsave" style="flex:1" ${ready?"":"disabled"}>${w.editId?"Lagre endringer":"Lagre økt"}</button><button class="btn ghost" data-act="close">Avbryt</button></div>`);}
+
+
+/* ---------- øvelser og rekorder ---------- */
+const EXSUG={Bryst:["Benkpress","Skrå benkpress","Hantelpress","Flyes","Dips"],Rygg:["Markløft","Roing","Nedtrekk","Pull-ups"],Bein:["Knebøy","Beinpress","Utfall","Rumensk markløft","Leg curl","Leg extension"],Skuldre:["Skulderpress","Sidehev","Face pulls"],Biceps:["Bicepscurl","Hammercurl","Preacher curl"],Triceps:["Triceps pushdown","Fransk press","Dips"],Kjerne:["Planke","Hengende beinhev","Ab wheel"],Helkropp:["Kettlebell swing","Clean","Burpees"]};
+const exKey=n=>String(n||"").trim().toLowerCase();
+function exHistory(name,dayKey,created,exclId){const key=exKey(name),out=[];
+  allWorkouts().forEach(w=>{if(w.id===exclId)return;if(!(w.day<dayKey||(w.day===dayKey&&created&&w.created<created)))return;(w.ex||[]).forEach(e=>{if(exKey(e.n)===key)out.push(Object.assign({day:w.day},e));});});
+  return out;}
+const exTxt=e=>[e.s&&e.r?`${e.s}×${e.r}`:e.r?`${e.r} reps`:"",e.kg?`${String(e.kg).replace(".",",")} kg`:""].filter(Boolean).join(" × ")||"–";
+function isPR(e,w,dayKey){if(!e.kg)return false;const h=exHistory(e.n,dayKey,w.created,w.id).filter(x=>x.kg);return h.length>0&&e.kg>Math.max(...h.map(x=>x.kg));}
+function exNames(groups){const used=new Set();allWorkouts().forEach(w=>(w.ex||[]).forEach(e=>e.n&&used.add(e.n.trim())));
+  (groups&&groups.length?groups:Object.keys(EXSUG)).forEach(g=>(EXSUG[g]||[]).forEach(n=>used.add(tr(n))));return [...used];}
+function exRows(w,k){const ex=w.ex||[];
+  return `<label class="f">Øvelser <span class="muted" style="font-weight:400">(valgfritt)</span></label>
+  <datalist id="exList">${exNames(w.groups).map(n=>`<option value="${esc(n)}">`).join("")}</datalist>
+  ${ex.map((e,i)=>{const h=e.n?exHistory(e.n,k,w.created,w.editId):[],last=h[h.length-1],best=h.filter(x=>x.kg).reduce((m,x)=>Math.max(m,x.kg),0);
+    return `<div style="border:1px solid var(--line);border-radius:8px;padding:10px;margin-top:8px">
+      <div class="row" style="flex-wrap:nowrap"><input type="text" list="exList" data-wex="${i}|n" value="${esc(e.n||"")}" placeholder="Øvelse, f.eks. Knebøy"><button class="x" data-act="wexdel" data-v="${i}" aria-label="Fjern øvelse">×</button></div>
+      <div class="row" style="flex-wrap:nowrap;margin-top:8px">
+        <input type="text" inputmode="numeric" data-wex="${i}|s" value="${esc(e.s||"")}" placeholder="Sett">
+        <input type="text" inputmode="numeric" data-wex="${i}|r" value="${esc(e.r||"")}" placeholder="Reps">
+        <input type="text" inputmode="decimal" data-wex="${i}|kg" value="${esc(e.kg||"")}" placeholder="Kg"></div>
+      ${last?`<p class="hint" style="margin-top:6px">Sist ${fmtShort(parse(last.day))}: ${exTxt(last)}${best?` · Rekord: ${String(best).replace(".",",")} kg`:""}</p>`:""}</div>`;}).join("")}
+  <button class="btn ghost small" style="margin-top:8px" data-act="wexadd">+ Øvelse</button>`;}
+
+/* ---------- sammenhenger ---------- */
+function insightsHTML(){
+  const N=56,studyBy={};S.sessions.forEach(x=>{const k=iso(new Date(x.start));studyBy[k]=(studyBy[k]||0)+x.min;});
+  const days=[];for(let i=0;i<N;i++){const k=iso(addDays(today(),-i)),d=S.days[k]||{};days.push({d,study:studyBy[k]||0,tr:!!(d.workouts||[]).length,any:Object.keys(d).some(x=>x!=="goals")||(d.goals||[]).length||studyBy[k]});}
+  const avg=(L,f)=>{const v=L.map(f).filter(x=>typeof x==="number");return v.length?v.reduce((a,b)=>a+b,0)/v.length:null;};
+  const n1=x=>x.toFixed(1).replace(".",","),out=[];
+  const pair=(A,B,f,min,fmt,txt)=>{const a=A.filter(x=>typeof f(x)==="number"),b=B.filter(x=>typeof f(x)==="number");if(a.length<3||b.length<3)return;const x=avg(a,f),y=avg(b,f);if(Math.abs(x-y)>=min)out.push({w:Math.abs(x-y)/min,t:txt(fmt(x),fmt(y))});};
+  const logged=days.filter(x=>x.any);
+  pair(logged.filter(x=>x.tr),logged.filter(x=>!x.tr),x=>x.d.mood,.4,n1,(a,b)=>`På dager du trente, var humøret <b>${a}</b> av 5. Andre dager <b>${b}</b>.`);
+  pair(logged.filter(x=>x.d.sleep>=4),logged.filter(x=>x.d.sleep&&x.d.sleep<=2),x=>x.d.mood,.4,n1,(a,b)=>`Etter gode netter var humøret <b>${a}</b>. Etter dårlige netter <b>${b}</b>.`);
+  pair(logged.filter(x=>x.tr),logged.filter(x=>!x.tr),x=>x.d.energyPm,.4,n1,(a,b)=>`Energien om kvelden var <b>${a}</b> på treningsdager, mot <b>${b}</b> ellers.`);
+  const rate=x=>(x.d.goals||[]).length?100*x.d.goals.filter(g=>g.done).length/x.d.goals.length:undefined;
+  pair(logged.filter(x=>x.d.sleep>=4),logged.filter(x=>x.d.sleep&&x.d.sleep<=2),rate,15,v=>Math.round(v)+" %",(a,b)=>`Etter gode netter nådde du <b>${a}</b> av målene dine. Etter dårlige <b>${b}</b>.`);
+  pair(logged.filter(x=>x.tr),logged.filter(x=>!x.tr),x=>x.study,15,v=>hm(v),(a,b)=>`Du studerte <b>${a}</b> på treningsdager, og <b>${b}</b> ellers.`);
+  pair(logged.filter(x=>x.d.water===2),logged.filter(x=>x.d.water===0),x=>x.d.energyPm,.4,n1,(a,b)=>`Dager du drakk nok vann, var energien <b>${a}</b>. Dager med for lite <b>${b}</b>.`);
+  pair(logged.filter(x=>x.study>0),logged.filter(x=>!x.study),x=>x.d.mood,.4,n1,(a,b)=>`Humøret var <b>${a}</b> på dager du studerte, og <b>${b}</b> ellers.`);
+  const ev=logged.filter(x=>x.d.mood).length;
+  if(!out.length)return `<p class="hint" style="margin-top:0">${ev<6?`Du har fylt ut ${ev} kvelder. Etter et par uker begynner sammenhengene å dukke opp her.`:"Ingen tydelige sammenhenger ennå. Det er også nyttig å vite."}</p>`;
+  return out.sort((a,b)=>b.w-a.w).slice(0,4).map(o=>`<p style="margin:0 0 10px"><span style="color:var(--gold)">✦</span> ${o.t}</p>`).join("")+`<p class="hint">Basert på de siste åtte ukene. Sammenheng er ikke det samme som årsak, men det er et godt sted å begynne.</p>`;
+}
 
 /* ---------- I DAG ---------- */
 const SLEEP=["Elendig","Dårlig","Grei","God","Supert"], ENERGY=["Tom","Lav","Middels","God","Full"], MOOD=["Tung","Lav","Grei","God","Topp"];
@@ -287,11 +537,11 @@ function vToday(){
   const part=U.part||(isToday&&new Date().getHours()<15?"am":"pm");
   const amDone=!!(d.sleep||d.energyAm||goals.length), pmDone=!!(d.mood||d.energyPm||d.win);
   const done=goals.filter(g=>g.done).length;
-  const dayName=U.day.toLocaleDateString("nb-NO",{weekday:"long",day:"numeric",month:"long"});
+  const dayName=U.day.toLocaleDateString(LOC(),{weekday:"long",day:"numeric",month:"long"});
   let html=`<h1>${isToday?(part==="am"?"God morgen":"God kveld"):"Tilbake i tid"}</h1><p class="sub">${dayName.charAt(0).toUpperCase()+dayName.slice(1)}</p>
   <div class="row between">
     <button class="icon-btn" data-act="day" data-v="-1" aria-label="Forrige dag">‹</button>
-    <div class="chips"><button class="chip ${part==="am"?"on":""}" data-act="part" data-v="am">☀ Morgen${amDone?" ✓":""}</button><button class="chip ${part==="pm"?"on":""}" data-act="part" data-v="pm">☾ Kveld${pmDone?" ✓":""}</button></div>
+    <div class="chips"><button class="chip ${part==="am"?"on":""}" data-act="part" data-v="am"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.5 1.5M17.2 17.2l1.5 1.5M5.3 18.7l1.5-1.5M17.2 6.8l1.5-1.5"/></svg><span>Morgen</span>${amDone?"<span>✓</span>":""}</button><button class="chip ${part==="pm"?"on":""}" data-act="part" data-v="pm"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10z"/></svg><span>Kveld</span>${pmDone?"<span>✓</span>":""}</button></div>
     <button class="icon-btn" data-act="day" data-v="1" aria-label="Neste dag" ${isToday?'disabled style="opacity:.3"':""}>›</button>
   </div>
   ${isToday?"":`<div class="row" style="justify-content:center;margin-top:8px"><button class="btn ghost small" data-act="gotoday">Til i dag</button></div>`}`;
@@ -501,8 +751,10 @@ function vSunday(){
       const km=ws.reduce((t,w)=>t+(w.km||0),0),up=ws.filter(w=>w.vs==="tyngre").length,gr={};ws.forEach(w=>(w.groups||[]).forEach(g=>gr[g]=(gr[g]||0)+1));
       const wat=[],eat=[];for(let i=0;i<7;i++){const x=S.days[iso(addDays(ws0,i))]||{};if(typeof x.water==="number")wat.push(x.water);if(typeof x.eat==="number")eat.push(x.eat);}
       return `<div class="stats"><div class="stat"><b>${ws.length}</b><span>økter</span></div><div class="stat"><b>${km?kmTxt(km):"–"}</b><span>km</span></div><div class="stat"><b>${up}</b><span>ganger tyngre</span></div></div>
+      ${(()=>{const best={};for(let i=0;i<7;i++){const k3=iso(addDays(ws0,i));((S.days[k3]||{}).workouts||[]).forEach(w=>(w.ex||[]).forEach(e=>{if(isPR(e,w,k3)){const key=exKey(e.n);if(!best[key]||e.kg>best[key].kg)best[key]=e;}}));}const pr=Object.values(best).map(e=>`${esc(e.n)} ${String(e.kg).replace(".",",")} kg`);return pr.length?`<p style="margin:12px 0 0"><b style="color:var(--wine)">★ Nye rekorder:</b> ${pr.join(", ")}</p>`:"";})()}
       ${Object.keys(gr).length?`<p class="hint">Muskelgrupper: ${Object.entries(gr).sort((a,b)=>b[1]-a[1]).map(([g,n])=>g+(n>1?" ×"+n:"")).join(", ")}.</p>`:""}
       ${wat.length?`<p class="hint">Nok vann ${wat.filter(x=>x===2).length} av ${wat.length} dager. Spiste passe eller mer ${eat.filter(x=>x>=1).length} av ${eat.length} dager.</p>`:""}`;})()}</div>
+  <div class="card"><h2>Det dataene dine viser</h2>${insightsHTML()}</div>
   <div class="card"><h2>Hvordan var uka?</h2>${scale("mood",w.mood,["Tung","Grei","Fin","God","Topp"])}
     <h2 style="margin-top:16px">Stressnivå</h2>${scale("stress",w.stress,["Zen","Lavt","Middels","Høyt","Kaos"])}</div>`;
   /* 18+ */
@@ -562,6 +814,7 @@ function manageSub(){open(`<h3>Fagene dine</h3><ul class="list">${S.subjects.map
   <div class="row" style="margin-top:14px"><button class="btn" data-act="addsub">+ Nytt fag</button><button class="btn ghost" data-act="close">Ferdig</button></div>`);}
 function settings(){const th=document.documentElement.getAttribute("data-theme")||"auto";
   open(`<h3>Innstillinger</h3><p class="muted" style="margin-top:0">Alt ligger bare på denne telefonen. Ta en kopi før du bytter telefon.</p>
+  <label class="f">Språk</label><div class="chips">${[["nb","Norsk"],["en","English"]].map(([k,l])=>`<button class="chip ${LANG()===k?"on":""}" data-act="lang" data-v="${k}">${l}</button>`).join("")}</div>
   <label class="f">Utseende</label><div class="chips">${[["auto","Automatisk"],["light","Lyst"],["dark","Mørkt"]].map(([k,l])=>`<button class="chip ${th===k?"on":""}" data-act="theme" data-v="${k}">${l}</button>`).join("")}</div>
   <label class="f">Pris per røykpakke (20 stk)</label><input type="number" inputmode="numeric" id="pack" value="${S.settings.packPrice}">
   <label class="f">Sikkerhetskopi</label><div class="row"><button class="btn small" data-act="backup">Lagre kopi</button><button class="btn small ghost" data-act="restore">Hent inn kopi</button></div>
@@ -587,8 +840,8 @@ function ics(){
   const dt=d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())+"T180000";
   const url=location.href.split("?")[0];
   const txt=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Scaff//NO","BEGIN:VEVENT","UID:"+uid()+"@scaff","DTSTAMP:"+new Date().toISOString().replace(/[-:]/g,"").slice(0,15)+"Z",
-    "DTSTART:"+dt,"DURATION:PT15M","RRULE:FREQ=WEEKLY;BYDAY=SU","SUMMARY:Søndagsrapporten i Scaff","DESCRIPTION:Se hvordan uka di ble: "+url,"URL:"+url,
-    "BEGIN:VALARM","TRIGGER:PT0M","ACTION:DISPLAY","DESCRIPTION:Søndagsrapporten er klar","END:VALARM","END:VEVENT","END:VCALENDAR"].join("\r\n");
+    "DTSTART:"+dt,"DURATION:PT15M","RRULE:FREQ=WEEKLY;BYDAY=SU","SUMMARY:"+tr("Søndagsrapporten i Scaff"),"DESCRIPTION:"+tr("Se hvordan uka di ble:")+" "+url,"URL:"+url,
+    "BEGIN:VALARM","TRIGGER:PT0M","ACTION:DISPLAY","DESCRIPTION:"+tr("Søndagsrapporten er klar"),"END:VALARM","END:VEVENT","END:VCALENDAR"].join("\r\n");
   const ok=download("scaff-sondag.ics",txt,"text/calendar");
   toast(ok?"Åpne filen for å legge den i kalenderen":"Fikk ikke lastet ned filen");
 }
@@ -598,6 +851,7 @@ document.addEventListener("click",e=>{
   const b=e.target.closest("[data-act]");if(!b||b.disabled)return;const a=b.dataset.act,v=b.dataset.v;
   if(a==="tab"){U.view=v;U.drill=null;render();window.scrollTo(0,0);return;}
   if(a==="settings"){settings();return;}
+  if(a==="lang"){S.settings.lang=v;save();location.replace(location.pathname);return;}
   if(a==="close"){close();return;}
   /* studie-deler */
   if(a==="spart"){U.spart=v;U.drill=null;render();return;}
@@ -613,19 +867,25 @@ document.addEventListener("click",e=>{
     else{delete x.doneAt;if(x.next){S.todos=S.todos.filter(y=>!(y.id===x.next&&!y.done));delete x.next;}}
     save();render();if(x.done&&!S.todos.some(y=>!y.done&&y.due<=tk))toast("Alt husket for i dag. Stilig.");return;}
   /* trening */
-  if(a==="wnew"){U.wk={type:null,groups:[],feel:null,vs:null,km:"",min:"",note:""};wForm();return;}
+  if(a==="wnew"){U.wk={type:null,groups:[],feel:null,vs:null,km:"",min:"",note:"",ex:[]};wForm();return;}
+  if(a==="wexadd"){U.wk.ex=U.wk.ex||[];U.wk.ex.push({n:"",s:"",r:"",kg:""});wForm();const ins=document.querySelectorAll('[data-wex$="|n"]');if(ins.length)ins[ins.length-1].focus();return;}
+  if(a==="wexdel"){U.wk.ex.splice(+v,1);wForm();return;}
   if(a==="wedit"){const d=dayData(iso(U.day)),o=(d.workouts||[]).find(x=>x.id===v);if(!o)return;
-    U.wk={editId:o.id,id:o.id,created:o.created,type:o.type,groups:(o.groups||[]).slice(),feel:o.feel||null,vs:o.vs||null,km:o.km?String(o.km).replace(".",","):"",min:o.min?String(o.min):"",note:o.note||""};wForm();return;}
+    U.wk={editId:o.id,id:o.id,created:o.created,type:o.type,groups:(o.groups||[]).slice(),feel:o.feel||null,vs:o.vs||null,km:o.km?String(o.km).replace(".",","):"",min:o.min?String(o.min):"",note:o.note||"",ex:(o.ex||[]).map(e=>({n:e.n||"",s:e.s?String(e.s):"",r:e.r?String(e.r):"",kg:e.kg?String(e.kg).replace(".",","):""}))};wForm();return;}
   if(a==="wtype"){U.wk.type=v;wForm();return;}
   if(a==="wgroup"){const g=U.wk.groups,i=g.indexOf(v);i>=0?g.splice(i,1):g.push(v);wForm();return;}
   if(a==="wfeel"){U.wk.feel=U.wk.feel===+v?null:+v;wForm();return;}
   if(a==="wvs"){U.wk.vs=U.wk.vs===v?null:v;wForm();return;}
   if(a==="wsave"){const w=U.wk;if(!w.type)return;const d=dayData(iso(U.day));d.workouts=d.workouts||[];
     const o={id:w.editId||uid(),created:w.created||Date.now(),type:w.type,feel:w.feel||null,note:(w.note||"").trim(),min:num(w.min)};
-    if(w.type==="Styrke"){o.groups=w.groups.slice();o.vs=w.vs||null;}
+    if(w.type==="Styrke"){o.groups=w.groups.slice();o.vs=w.vs||null;
+      o.ex=(w.ex||[]).filter(e=>e.n&&e.n.trim()).map(e=>({n:e.n.trim(),s:num(e.s),r:num(e.r),kg:num(e.kg)}));
+      if(!o.vs&&o.ex.length){const k0=iso(U.day);let up=0,dn=0,eq=0;o.ex.forEach(e=>{if(!e.kg)return;const h=exHistory(e.n,k0,o.created,o.id).filter(x=>x.kg),l=h[h.length-1];if(!l)return;e.kg>l.kg?up++:e.kg<l.kg?dn++:eq++;});
+        if(up)o.vs="tyngre";else if(dn)o.vs="lettere";else if(eq)o.vs="likt";}}
     if(CARDIO.includes(w.type))o.km=num(w.km);
     const ix=w.editId?d.workouts.findIndex(x=>x.id===w.editId):-1;if(ix>=0)d.workouts[ix]=o;else d.workouts.push(o);save();close();render();
-    toast(ix>=0?"Økta er oppdatert.":o.vs==="tyngre"?"Tyngre enn sist. Det er fremgang.":"Økt lagret. Stilig.");return;}
+    const prs=(o.ex||[]).filter(e=>isPR(e,o,iso(U.day))).map(e=>e.n);
+    toast(prs.length?`Ny rekord i ${prs.join(" og ")}. Stilig.`:ix>=0?"Økta er oppdatert.":o.vs==="tyngre"?"Tyngre enn sist. Det er fremgang.":"Økt lagret. Stilig.");return;}
   if(a==="wdel"){const d=dayData(iso(U.day));d.workouts=(d.workouts||[]).filter(w=>w.id!==v);save();render();return;}
   if(a==="dpick"){const d=dayData(iso(U.day)),f=b.dataset.f,n=+v;d[f]=d[f]===n?undefined:n;save();render();return;}
   /* i dag */
@@ -644,11 +904,11 @@ document.addEventListener("click",e=>{
   if(a==="savesub"){const n=document.getElementById("sName").value.trim();if(!n){toast("Faget trenger et navn");return;}
     const c=(document.querySelector("#sCol .chip.on")||{}).dataset;S.subjects.push({id:uid(),name:n,color:c?c.v:COLORS[0]});save();close();render();toast(`${n} er lagt til`);return;}
   if(a==="managesub"){manageSub();return;}
-  if(a==="delsub"){if(!confirm("Slette faget med alle økter og kort?"))return;S.subjects=S.subjects.filter(s=>s.id!==v);S.sessions=S.sessions.filter(s=>s.sub!==v);S.cards=S.cards.filter(c=>c.sub!==v);if(S.timer&&S.timer.sub===v)S.timer=null;if(U.drillSub===v)U.drillSub=null;save();manageSub();render();return;}
+  if(a==="delsub"){if(!confirm(tr("Slette faget med alle økter og kort?")))return;S.subjects=S.subjects.filter(s=>s.id!==v);S.sessions=S.sessions.filter(s=>s.sub!==v);S.cards=S.cards.filter(c=>c.sub!==v);if(S.timer&&S.timer.sub===v)S.timer=null;if(U.drillSub===v)U.drillSub=null;save();manageSub();render();return;}
   /* økter */
   if(a==="pickstart"){document.querySelectorAll("#subPick .chip").forEach(c=>c.classList.toggle("on",c===b));return;}
   if(a==="start"){S.timer={sub:startSub(),startedAt:Date.now()};save();render();toast("Klokken går. Lykke til.");return;}
-  if(a==="cancel"){if(!confirm("Avbryte økta uten å lagre?"))return;S.timer=null;save();render();return;}
+  if(a==="cancel"){if(!confirm(tr("Avbryte økta uten å lagre?")))return;S.timer=null;save();render();return;}
   if(a==="stop"){const t=S.timer;const m=elapsedMin();if(m<1){toast("Under ett minutt teller dessverre ikke");return;}sessionForm(t.sub,m,true);return;}
   if(a==="manual"){sessionForm(startSub(),45,false);return;}
   if(a==="savesess"){
@@ -697,7 +957,7 @@ document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="
 document.addEventListener("input",e=>{if(e.target.id==="tIn")U.tdraft=e.target.value;});
 document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.id==="tIn"){const b=document.querySelector('[data-act="tadd"]');if(b)b.click();}});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")close();if(e.key==="Enter"&&e.target.id==="gIn"){const b=document.querySelector('[data-act="gadd"]');if(b)b.click();}});
-document.addEventListener("input",e=>{const el=e.target;if(el.dataset&&el.dataset.wbind&&U.wk){U.wk[el.dataset.wbind]=el.value;}});
+document.addEventListener("input",e=>{const el=e.target;if(el.dataset&&el.dataset.wbind&&U.wk){U.wk[el.dataset.wbind]=el.value;}if(el.dataset&&el.dataset.wex&&U.wk){const[i,f]=el.dataset.wex.split("|");if(U.wk.ex[+i])U.wk.ex[+i][f]=el.value;}});
 document.addEventListener("input",e=>{const el=e.target;if(el.dataset&&el.dataset.dbind){dayData(iso(U.day))[el.dataset.dbind]=el.value;save();}});
 document.addEventListener("input",e=>{const el=e.target;if(el.dataset&&el.dataset.bind==="spent"){S.weeks[iso(U.week)].spent=el.value;save();clearTimeout(window._sp);window._sp=setTimeout(render,900);}});
 document.addEventListener("change",e=>{if(e.target.id==="impFile"&&e.target.files&&e.target.files[0]){const r=new FileReader();r.onload=()=>doImport(String(r.result));r.readAsText(e.target.files[0]);}});
