@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="app-version" content="1.1">
+<meta name="app-version" content="1.2">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Stillas">
+<meta name="apple-mobile-web-app-title" content="Scaff">
 <meta name="theme-color" content="#F3F1EC">
-<title>Stillas</title>
+<title>Scaff</title>
 <style>
 :root{
   --bg:#F3F1EC; --card:#FFFFFF; --ink:#16151A; --muted:#6E6A72; --line:#E2DED6;
@@ -115,7 +115,7 @@ nav.tabs button.on{color:var(--acc);font-weight:700}
 <body>
 <div class="wrap">
   <header class="top">
-    <div><div class="brand">Stillas<span>.</span></div><div class="tag">Struktur for folk med et liv</div></div>
+    <div><div class="brand">Scaff<span>.</span></div><div class="tag">Struktur for folk med et liv</div></div>
     <button class="icon-btn" data-act="settings" aria-label="Innstillinger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></button>
   </header>
   <main id="view"></main>
@@ -422,7 +422,7 @@ function howto(){open(`<h3>Legg på hjemskjermen</h3>
   <p><b>Android:</b> Åpne i Chrome, trykk på de tre prikkene og velg «Legg til på startskjermen».</p>
   <button class="btn wide" data-act="close">Skjønner</button>`);}
 function download(name,txt,type){try{const b=new Blob([txt],{type});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();a.remove();return true;}catch(e){return false;}}
-function backup(){const txt=JSON.stringify(S);const ok=download("stillas-kopi-"+iso(today())+".json",txt,"application/json");
+function backup(){const txt=JSON.stringify(S);const ok=download("scaff-kopi-"+iso(today())+".json",txt,"application/json");
   open(`<h3>Sikkerhetskopi</h3><p class="muted">${ok?"Filen lastes ned. ":""}Kom ingen fil? Merk og kopier teksten under, og send den til deg selv.</p><textarea readonly onclick="this.select()" style="font-family:ui-monospace,Menlo,monospace;font-size:12px">${esc(txt)}</textarea><button class="btn wide" style="margin-top:12px" data-act="close">Ferdig</button>`);}
 function restore(){open(`<h3>Hent inn kopi</h3><p class="muted">Det som ligger i appen nå, blir erstattet.</p>
   <label class="btn ghost" for="impFile">Velg fil</label><input type="file" id="impFile" accept=".json,application/json,text/plain" style="display:none">
@@ -435,10 +435,10 @@ function ics(){
   let d=today();while(d.getDay()!==0)d=addDays(d,1);
   const dt=d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())+"T180000";
   const url=location.href.split("?")[0];
-  const txt=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Stillas//NO","BEGIN:VEVENT","UID:"+uid()+"@stillas","DTSTAMP:"+new Date().toISOString().replace(/[-:]/g,"").slice(0,15)+"Z",
-    "DTSTART:"+dt,"DURATION:PT15M","RRULE:FREQ=WEEKLY;BYDAY=SU","SUMMARY:Søndagsrapporten i Stillas","DESCRIPTION:Se hvordan uka di ble: "+url,"URL:"+url,
+  const txt=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Scaff//NO","BEGIN:VEVENT","UID:"+uid()+"@scaff","DTSTAMP:"+new Date().toISOString().replace(/[-:]/g,"").slice(0,15)+"Z",
+    "DTSTART:"+dt,"DURATION:PT15M","RRULE:FREQ=WEEKLY;BYDAY=SU","SUMMARY:Søndagsrapporten i Scaff","DESCRIPTION:Se hvordan uka di ble: "+url,"URL:"+url,
     "BEGIN:VALARM","TRIGGER:PT0M","ACTION:DISPLAY","DESCRIPTION:Søndagsrapporten er klar","END:VALARM","END:VEVENT","END:VCALENDAR"].join("\r\n");
-  const ok=download("stillas-sondag.ics",txt,"text/calendar");
+  const ok=download("scaff-sondag.ics",txt,"text/calendar");
   toast(ok?"Åpne filen for å legge den i kalenderen":"Fikk ikke lastet ned filen");
 }
 
