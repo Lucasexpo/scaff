@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="app-version" content="1.3">
+<meta name="app-version" content="1.7">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Scaff">
 <meta name="theme-color" content="#EFE8DC">
@@ -166,7 +166,7 @@ nav.tabs button{letter-spacing:.04em}
 (function(){
 /* ---------- lagring (bare på denne enheten) ---------- */
 const KEY="stillas.v1";
-const blank=()=>({days:{},subjects:[],sessions:[],cards:[],weeks:{},timer:null,settings:{packPrice:150,adult:false}});
+const blank=()=>({todos:[],days:{},subjects:[],sessions:[],cards:[],weeks:{},timer:null,settings:{packPrice:150,adult:false}});
 let S;
 try{S=JSON.parse(localStorage.getItem(KEY))||blank();}catch(e){S=blank();}
 S=Object.assign(blank(),S);S.settings=Object.assign(blank().settings,S.settings||{});
@@ -190,18 +190,19 @@ const COLORS=["#FF5A36","#3557E8","#1F9D63","#E9A800","#9B4DE0","#E0457B","#0FA3
 const subj=id=>S.subjects.find(s=>s.id===id)||{name:"Ukjent fag",color:"#999"};
 const pick=a=>a[Math.floor(Math.random()*a.length)];
 
-const U={view:"today",day:today(),part:null,week:monday(today()),drill:null,drillSub:null,show:false};
+const U={view:"today",spart:"log",tdue:"today",trep:null,scat:"Hjemme",day:today(),part:null,week:monday(today()),drill:null,drillSub:null,show:false};
 
 /* ---------- ikoner og faner ---------- */
 const ICONS={
  today:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 18h18"/><path d="M6 18a6 6 0 0 1 12 0"/><path d="M12 6V3M5.6 9.6 3.5 7.5M18.4 9.6l2.1-2.1"/></svg>',
  study:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg>',
  drill:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="14" height="14" rx="2.5"/><path d="M7 3h11a3 3 0 0 1 3 3v11"/></svg>',
+ todo:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l1.5 1.5L8 5M4 12l1.5 1.5L8 11M4 18l1.5 1.5L8 17"/><path d="M11 6.5h9M11 12.5h9M11 18.5h9"/></svg>',
  sunday:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>'
 };
-const TABS=[["today","I dag"],["study","Studie"],["drill","Pugg"],["sunday","Søndag"]];
+const TABS=[["today","I dag"],["study","Studie"],["todo","Huske"],["sunday","Søndag"]];
 function renderTabs(){document.getElementById("tabs").innerHTML=TABS.map(([k,l])=>`<button data-act="tab" data-v="${k}" class="${U.view===k?"on":""}" ${U.view===k?'aria-current="page"':""}>${ICONS[k]}<span>${l}</span></button>`).join("");}
-function render(){renderTabs();document.getElementById("view").innerHTML=({today:vToday,study:vStudy,drill:vDrill,sunday:vSunday})[U.view]();}
+function render(){renderTabs();document.getElementById("view").innerHTML=({today:vToday,study:vStudyAll,todo:vTodo,sunday:vSunday})[U.view]();}
 
 /* ---------- statistikk ---------- */
 const sessIn=(from,to)=>S.sessions.filter(s=>s.start>=from.getTime()&&s.start<to.getTime());
@@ -229,6 +230,51 @@ function chart(data){
 
 /* lakksegl */
 const SEAL=(cls="seal")=>`<svg class="${cls}" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 8c8 0 10 5 17 6s12 7 12 14 4 9 4 16-4 10-4 17-6 12-12 14-9 6-17 6-10-5-17-6-12-7-12-14-4-10-4-17 4-9 4-16 6-13 12-14 9-6 17-6z" fill="#7A2E2E"/><circle cx="50" cy="51" r="25" fill="#8C3B3B"/><circle cx="50" cy="51" r="25" fill="none" stroke="#65222A" stroke-width="1.6"/><circle cx="50" cy="51" r="20" fill="none" stroke="#6E2A30" stroke-width=".8"/><text x="50" y="64" text-anchor="middle" font-family="Bodoni Moda,Didot,Bodoni 72,Georgia,serif" font-weight="500" font-size="34" fill="#E9C9A8">S</text><path d="M30 26c4-3 9-4 13-4" stroke="#A85454" stroke-width="2" stroke-linecap="round" opacity=".7" fill="none"/></svg>`;
+
+/* ---------- TRENING og KROPP ---------- */
+const WTYPES=["Styrke","Løping","Sykling","Svømming","Ballsport","Annet"];
+const GROUPS=["Bryst","Rygg","Bein","Skuldre","Biceps","Triceps","Kjerne","Helkropp"];
+const CARDIO=["Løping","Sykling","Svømming"];
+const FEEL=["Tung","Seig","Grei","God","Rå"];
+const VS=[["lettere","Lettere enn sist"],["likt","Som sist"],["tyngre","Tyngre enn sist"]];
+const WATER=["For lite","Greit","Nok"], EAT=["For lite","Passe","Mer enn nok"];
+const num=v=>{const n=parseFloat(String(v==null?"":v).replace(",","."));return isFinite(n)&&n>0?n:null;};
+function allWorkouts(){const out=[];Object.keys(S.days).sort().forEach(k=>(S.days[k].workouts||[]).forEach(w=>out.push(Object.assign({day:k},w))));return out;}
+function prevWorkout(w,dayKey){
+  const all=allWorkouts().filter(x=>x.id!==w.id&&(x.day<dayKey||(x.day===dayKey&&(!w.created||x.created<w.created))));
+  const m=all.filter(x=>w.type==="Styrke"?(x.type==="Styrke"&&(x.groups||[]).some(g=>(w.groups||[]).includes(g))):x.type===w.type);
+  return m[m.length-1]||null;}
+const pace=w=>w&&w.km&&w.min?w.min/w.km:null;
+const fmtPace=p=>{const t=Math.round(p*60);return Math.floor(t/60)+":"+pad(t%60);};
+const kmTxt=k=>String(Math.round(k*10)/10).replace(".",",");
+function wLine(w,dayKey){
+  let main=w.type==="Styrke"?`Styrke · ${(w.groups||[]).join(", ")||"hele greia"}`:(CARDIO.includes(w.type)&&w.km?`${w.type} · ${kmTxt(w.km)} km${w.min?` på ${w.min} min`:""}`:w.type+(w.min?` · ${w.min} min`:""));
+  let cmp="";
+  if(w.type==="Styrke"&&w.vs)cmp={lettere:"↓ Lettere enn sist",likt:"→ Som sist",tyngre:"↑ Tyngre enn sist"}[w.vs];
+  const p=pace(w);
+  if(CARDIO.includes(w.type)&&p){const pv=prevWorkout(w,dayKey),pp=pace(pv);cmp=fmtPace(p)+" per km";
+    if(pp){const d=Math.round((p-pp)*60);cmp+=d<0?` · ↑ ${-d} s raskere enn sist`:d>0?` · ↓ ${d} s tregere enn sist`:" · → likt som sist";}}
+  return {main,cmp};}
+function trainCard(k,d){const ws=d.workouts||[];
+  return `<div class="card"><h2>Trening</h2>${ws.length?`<ul class="list">${ws.map(w=>{const L=wLine(w,k);
+    return `<li class="row between" style="flex-wrap:nowrap;align-items:flex-start"><button data-act="wedit" data-v="${w.id}" aria-label="Endre økt" style="border:none;background:none;padding:0;text-align:left;flex:1;cursor:pointer"><b>${esc(L.main)}</b><div class="small muted">${[w.feel?"Økta: "+FEEL[w.feel-1]:"",L.cmp].filter(Boolean).join(" · ")}</div>${w.note?`<div class="small" style="margin-top:2px">${esc(w.note)}</div>`:""}</button><button class="x" data-act="wdel" data-v="${w.id}" aria-label="Slett økt">×</button></li>`;}).join("")}</ul>`
+    :`<p class="hint" style="margin-top:0">Ingen økt logget. Hviledag teller også, så lenge den er planlagt.</p>`}
+    ${ws.length?`<p class="hint">Trykk på en økt for å endre den.</p>`:""}<button class="btn ${ws.length?"ghost":"acc"} small" style="margin-top:12px" data-act="wnew">+ Logg økt</button></div>`;}
+function bodyCard(d){const ch=(f,labels)=>`<div class="chips">${labels.map((l,i)=>`<button class="chip ${d[f]===i?"on":""}" data-act="dpick" data-f="${f}" data-v="${i}">${l}</button>`).join("")}</div>`;
+  return `<div class="card"><h2>Kroppen i dag</h2><p style="margin:0 0 8px">Drakk du nok vann?</p>${ch("water",WATER)}
+    <p style="margin:14px 0 8px">Spiste du nok?</p>${ch("eat",EAT)}<p class="hint">Ingen kalorier, ingen vekt. Bare magefølelsen.</p></div>`;}
+function wForm(){const w=U.wk,k=iso(U.day),ready=w.type&&(w.type!=="Styrke"||w.groups.length),pv=ready?prevWorkout(w,k):null;
+  const inp=(f,lab,mode,ph)=>`<div style="flex:1"><label class="f">${lab}</label><input type="text" inputmode="${mode}" data-wbind="${f}" value="${esc(w[f]||"")}" placeholder="${ph}"></div>`;
+  open(`<h3>${w.editId?"Endre økt":"Logg økt"}</h3>
+  <label class="f">Hva trente du?</label><div class="chips">${WTYPES.map(t=>`<button class="chip ${w.type===t?"on":""}" data-act="wtype" data-v="${t}">${t}</button>`).join("")}</div>
+  ${w.type==="Styrke"?`<label class="f">Muskelgrupper</label><div class="chips">${GROUPS.concat(w.groups.filter(g=>!GROUPS.includes(g))).map(g=>`<button class="chip ${w.groups.includes(g)?"on":""}" data-act="wgroup" data-v="${g}">${g}</button>`).join("")}</div>`:""}
+  ${CARDIO.includes(w.type)?`<div class="row" style="flex-wrap:nowrap">${inp("km","Distanse (km)","decimal","5")}${inp("min","Tid (min)","numeric","28")}</div>`:(w.type&&w.type!=="Styrke"?`<div class="row">${inp("min","Tid (min)","numeric","60")}</div>`:"")}
+  ${w.type?`<label class="f">Hvordan var økta?</label><div class="scale">${FEEL.map((l,i)=>`<button class="${w.feel===i+1?"on":""}" data-act="wfeel" data-v="${i+1}" title="${l}">${i+1}</button>`).join("")}</div><div class="row between small muted" style="margin-top:4px"><span>${FEEL[0]}</span><span>${w.feel?FEEL[w.feel-1]:""}</span><span>${FEEL[4]}</span></div>`:""}
+  ${w.type==="Styrke"?`<label class="f">Vektene sammenlignet med sist</label><div class="chips">${VS.map(([v,l])=>`<button class="chip ${w.vs===v?"on":""}" data-act="wvs" data-v="${v}">${l}</button>`).join("")}</div>`:""}
+  ${pv?`<p class="hint">Sist: ${fmtShort(parse(pv.day))} · ${esc(wLine(pv,pv.day).main)}${pv.vs?", "+{lettere:"lettere",likt:"som før",tyngre:"tyngre"}[pv.vs]:""}${pv.note?`. «${esc(pv.note)}»`:""}</p>`:(ready?`<p class="hint">Første gang du logger dette. Nå har du et utgangspunkt å slå.</p>`:"")}
+  ${w.type?`<label class="f">Notat</label><input type="text" data-wbind="note" value="${esc(w.note||"")}" placeholder="${w.type==="Styrke"?"F.eks. knebøy 80 kg x 5":"F.eks. tung motbakke"}">`:""}
+  <div class="row" style="margin-top:16px"><button class="btn acc" data-act="wsave" style="flex:1" ${ready?"":"disabled"}>${w.editId?"Lagre endringer":"Lagre økt"}</button><button class="btn ghost" data-act="close">Avbryt</button></div>`);}
+
 /* ---------- I DAG ---------- */
 const SLEEP=["Elendig","Dårlig","Grei","God","Supert"], ENERGY=["Tom","Lav","Middels","God","Full"], MOOD=["Tung","Lav","Grei","God","Topp"];
 const AM_QUIPS=["Ny dag, blanke ark. Ikke søl på dem med en gang.","En god dag er som en god dress: den sitter fordi den er planlagt.","Tre mål. Ikke tolv. Du er ikke en to-do-liste.","Planen trenger ikke være perfekt. Den trenger å finnes."];
@@ -257,6 +303,8 @@ function vToday(){
       ${goals.length?`<ul class="list">${goals.map((g,i)=>`<li class="row between" style="flex-wrap:nowrap"><span><b class="muted">${i+1}.</b> ${esc(g.t)}</span><button class="x" data-act="gdel" data-v="${i}" aria-label="Fjern mål">×</button></li>`).join("")}</ul>`:`<p class="hint" style="margin-top:0">Hva vil du ha fått gjort når dagen er over? Tre ting holder.</p>`}
       ${goals.length<5?`<div class="row" style="margin-top:10px;flex-wrap:nowrap"><input type="text" id="gIn" placeholder="${goals.length<3?"F.eks. lese kapittel 5":"Ett til? Greit, men ikke mer."}"><button class="btn small" data-act="gadd">Legg til</button></div>`:`<p class="hint">Fem mål er taket. Du er et menneske, ikke en fabrikk.</p>`}</div>
     <div class="card"><h2>Én ting jeg gleder meg til</h2>${dtext("lookfwd",d.lookfwd,"Lunsj, trening, et program, en person …")}</div>
+    ${isToday?todoCard():""}
+    ${trainCard(k,d)}
     <button class="btn acc wide" style="margin-top:14px" data-act="part" data-v="pm">Ferdig for nå. Vi ses i kveld.</button>`;
   }else{
     html+=`<p class="quip" style="margin-top:14px">${pick(PM_QUIPS)}</p>
@@ -265,6 +313,9 @@ function vToday(){
         ${done===goals.length?`<div class="sealrow">${SEAL()}<p>Alle mål nådd. Dagen er forseglet.</p></div>`:`<p class="hint">${done?"Ikke alt, men noe. Det teller.":"Null av "+goals.length+". Morgendagen er en ny sjanse."}</p>`}
         ${done<goals.length&&isToday?`<button class="btn ghost small" style="margin-top:10px" data-act="gmove">Flytt det uferdige til i morgen</button>`:""}`
       :`<p class="hint" style="margin-top:0">Ingen mål satt i morges. Neste gang: trykk på Morgen først.</p>`}</div>
+    ${isToday?todoCard():""}
+    ${trainCard(k,d)}
+    ${bodyCard(d)}
     <div class="card"><h2>Humøret i dag</h2>${dscale("mood",d.mood,MOOD)}
       <h2 style="margin-top:16px">Energi i kveld</h2>${dscale("energyPm",d.energyPm,ENERGY)}</div>
     <div class="card"><h2>Det beste i dag</h2>${dtext("win",d.win,"Stort eller lite, det teller likt")}
@@ -272,9 +323,9 @@ function vToday(){
   }
   /* uka i prikker */
   const m=monday(U.day);let dots="";
-  for(let i=0;i<7;i++){const dt=addDays(m,i),x=S.days[iso(dt)]||{},am=!!(x.sleep||x.energyAm||(x.goals||[]).length),pm=!!(x.mood||x.energyPm||x.win),fut=dt>today();
-    dots+=`<button data-act="goday" data-v="${iso(dt)}" ${fut?"disabled":""} style="border:none;background:none;padding:4px 0;display:flex;flex-direction:column;align-items:center;gap:4px;${fut?"opacity:.35":""}"><span class="small ${iso(dt)===k?"":"muted"}" style="${iso(dt)===k?"font-weight:800":""}">${["Ma","Ti","On","To","Fr","Lø","Sø"][i]}</span><span style="width:14px;height:14px;border-radius:50%;border:2px solid var(--gold);background:${am?"var(--gold)":"transparent"}"></span><span style="width:14px;height:14px;border-radius:50%;border:2px solid var(--blue);background:${pm?"var(--blue)":"transparent"}"></span></button>`;}
-  html+=`<div class="card"><h2>Uka di</h2><div style="display:grid;grid-template-columns:repeat(7,1fr)">${dots}</div><p class="hint">Gul er morgen, blå er kveld. Trykk på en dag for å åpne den.</p></div>`;
+  for(let i=0;i<7;i++){const dt=addDays(m,i),x=S.days[iso(dt)]||{},am=!!(x.sleep||x.energyAm||(x.goals||[]).length),pm=!!(x.mood||x.energyPm||x.win),tr=!!(x.workouts||[]).length,fut=dt>today();
+    dots+=`<button data-act="goday" data-v="${iso(dt)}" ${fut?"disabled":""} style="border:none;background:none;padding:4px 0;display:flex;flex-direction:column;align-items:center;gap:4px;${fut?"opacity:.35":""}"><span class="small ${iso(dt)===k?"":"muted"}" style="${iso(dt)===k?"font-weight:800":""}">${["Ma","Ti","On","To","Fr","Lø","Sø"][i]}</span><span style="width:14px;height:14px;border-radius:50%;border:2px solid var(--gold);background:${am?"var(--gold)":"transparent"}"></span><span style="width:14px;height:14px;border-radius:50%;border:2px solid var(--blue);background:${pm?"var(--blue)":"transparent"}"></span><span style="width:14px;height:14px;border-radius:3px;border:2px solid var(--wine);background:${tr?"var(--wine)":"transparent"}"></span></button>`;}
+  html+=`<div class="card"><h2>Uka di</h2><div style="display:grid;grid-template-columns:repeat(7,1fr)">${dots}</div><p class="hint">Øverst morgen, i midten kveld, nederst trening. Trykk på en dag for å åpne den.</p></div>`;
   return html+foot();
 }
 
@@ -288,7 +339,7 @@ function vStudy(){
   const t=S.timer, wk=monday(today()), thisW=sessIn(wk,addDays(wk,7)), lastW=sessIn(addDays(wk,-7),wk);
   const tm=sumMin(thisW), lm=sumMin(lastW), st=streak();
   const isSun=today().getDay()===0, wkKey=iso(wk), seen=(S.weeks[wkKey]||{}).opened;
-  let html=`<h1>Studie</h1><p class="sub">Treningsloggen for hodet.</p>`;
+  let html="";
   if(isSun&&!seen)html+=`<div class="banner"><span><b>Søndagsrapporten er klar.</b><br><span class="small">Se hvordan uka di ble.</span></span><button class="btn small acc" data-act="tab" data-v="sunday">Åpne</button></div>`;
   if(!S.subjects.length){
     html+=`<div class="card"><h2>Kom i gang</h2><p style="margin-top:0">Legg til fagene dine først. Matte, norsk, historie, lappen, hva som helst.</p><button class="btn acc wide" data-act="addsub">Legg til fag</button></div>`;
@@ -347,7 +398,7 @@ function notesToCards(sub,txt){
 
 /* ---------- PUGG ---------- */
 function vDrill(){
-  let html=`<h1>Pugg</h1><p class="sub">Notatene dine, gjort om til kort.</p>`;
+  let html="";
   if(!S.subjects.length)return html+`<div class="card"><p style="margin-top:0">Legg til et fag og logg en økt med punkter, så dukker kortene opp her.</p><button class="btn acc wide" data-act="addsub">Legg til fag</button></div>`+foot();
   const sub=U.drillSub||S.subjects[0].id;U.drillSub=sub;
   const cards=S.cards.filter(c=>c.sub===sub),known=cards.filter(c=>c.known).length;
@@ -373,11 +424,64 @@ function vDrill(){
   return html+foot();
 }
 
+
+/* ---------- STUDIE + PUGG ---------- */
+function vStudyAll(){
+  const drill=U.spart==="drill",n=S.cards.filter(c=>!c.known).length;
+  if(drill)clearInterval(tick);
+  const head=`<h1>Studie</h1><p class="sub">${drill?"Notatene dine, gjort om til kort.":"Treningsloggen for hodet."}</p>
+  <div class="chips" style="margin-bottom:4px"><button class="chip ${drill?"":"on"}" data-act="spart" data-v="log">⏱ Økter${S.timer?" ●":""}</button><button class="chip ${drill?"on":""}" data-act="spart" data-v="drill">❐ Pugg${n?` · ${n}`:""}</button></div>`;
+  return head+(drill?vDrill():vStudy());
+}
+
+/* ---------- HUSKE ---------- */
+const REP=[[null,"Én gang"],["week","Hver uke"],["2week","Annenhver uke"],["month","Hver måned"]];
+const REPDAYS={week:7,"2week":14,month:30}, REPTXT={week:"Hver uke","2week":"Annenhver uke",month:"Hver måned"};
+const SUGG=[
+ ["Hjemme",[["Vaske klær","week"],["Skifte sengetøy","2week"],["Støvsuge","week"],["Ta ut søppel",null],["Vanne plantene","week"]]],
+ ["Folk",[["Ringe mamma","week"],["Svare på meldinger",null],["Sende bursdagshilsen",null],["Ta kontakt med en gammel venn","month"]]],
+ ["Ærend",[["Handle mat",null],["Hente pakke",null],["Pante flasker",null],["Apoteket",null]]],
+ ["Penger",[["Betale regninger","month"],["Sjekke kontoen","week"],["Si opp et abonnement du ikke bruker",null]]],
+ ["Stil",[["Pusse skoene","2week"],["Stryke skjorter for uka","week"],["Levere dressen til rens",null],["Klippe håret","month"]]],
+ ["Hode",[["Telefonen bort kl. 23",null],["Gå tur uten musikk",null],["Les 10 sider",null]]]];
+const dueFor=o=>{const t=today();return iso(o==="tomorrow"?addDays(t,1):o==="week"?addDays(monday(t),6):t);};
+function addTodo(t,rep){S.todos.push({id:uid(),t,due:dueFor(U.tdue),repeat:rep||null,done:false});save();}
+function todoItem(x,compact){const tk=iso(today()),over=!x.done&&x.due<tk;
+  return `<li class="row between" style="flex-wrap:nowrap;padding:8px 0">
+    <button data-act="tdone" data-v="${x.id}" aria-pressed="${x.done}" style="display:flex;align-items:center;gap:12px;border:none;background:none;padding:2px 0;text-align:left;flex:1;min-height:40px">
+      <span style="flex:none;width:24px;height:24px;border-radius:6px;border:2px solid ${x.done?"var(--ok)":"var(--line)"};background:${x.done?"var(--ok)":"transparent"};color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px">${x.done?"✓":""}</span>
+      <span><span style="${x.done?"text-decoration:line-through;color:var(--muted)":""}">${esc(x.t)}</span>${!compact&&(over||x.repeat)?`<span class="small muted" style="display:block">${[over?"Fra "+fmtShort(parse(x.due)):"",x.repeat?"↻ "+REPTXT[x.repeat]:""].filter(Boolean).join(" · ")}</span>`:""}</span>
+    </button>${compact?"":`<button class="x" data-act="tdel" data-v="${x.id}" aria-label="Fjern">×</button>`}</li>`;}
+function todoCard(){const tk=iso(today()),L=S.todos.filter(x=>!x.done&&x.due<=tk);
+  if(!L.length&&!S.todos.length)return "";
+  return `<div class="card"><h2>Huske i dag${L.length?" · "+L.length:""}</h2>${L.length?`<ul class="list">${L.slice(0,4).map(x=>todoItem(x,true)).join("")}</ul>${L.length>4?`<p class="hint">Og ${L.length-4} til.</p>`:""}`:`<p class="hint" style="margin-top:0">Ingenting å huske i dag. Sjelden luksus.</p>`}
+    <button class="btn ghost small" style="margin-top:10px" data-act="tab" data-v="todo">Åpne Huske</button></div>`;}
+function vTodo(){
+  const tk=iso(today()),tm=iso(addDays(today(),1)),open=S.todos.filter(x=>!x.done).sort((a,b)=>a.due<b.due?-1:1);
+  const now=open.filter(x=>x.due<=tk),tom=open.filter(x=>x.due===tm),later=open.filter(x=>x.due>tm),done=S.todos.filter(x=>x.done&&x.doneAt===tk);
+  const sec=(t,L,empty)=>`<div class="card"><h2>${t}${L.length?" · "+L.length:""}</h2>${L.length?`<ul class="list">${L.map(x=>todoItem(x)).join("")}</ul>`:`<p class="hint" style="margin-top:0">${empty}</p>`}</div>`;
+  const cat=SUGG.find(c=>c[0]===U.scat)||SUGG[0], have=new Set(open.map(x=>x.t.toLowerCase()));
+  let html=`<h1>Huske</h1><p class="sub">Alt du ellers ville glemt.</p>
+  <div class="card"><h2>Ny ting</h2>
+    <div class="row" style="flex-wrap:nowrap"><input type="text" id="tIn" value="${esc(U.tdraft||"")}" placeholder="F.eks. ringe mamma"><button class="btn small" data-act="tadd">Legg til</button></div>
+    <div class="chips" style="margin-top:10px">${[["today","I dag"],["tomorrow","I morgen"],["week","Denne uka"]].map(([v,l])=>`<button class="chip ${U.tdue===v?"on":""}" data-act="tdue" data-v="${v}">${l}</button>`).join("")}</div>
+    <div class="chips" style="margin-top:8px">${REP.map(([v,l])=>`<button class="chip ${U.trep===v?"on":""}" data-act="trep" data-v="${v||""}">${l}</button>`).join("")}</div></div>
+  ${sec("I dag",now,"Ingenting igjen i dag. Stilig.")}
+  ${tom.length?sec("I morgen",tom,""):""}
+  ${later.length?sec("Senere",later,""):""}
+  ${done.length?`<div class="card"><h2>Gjort i dag · ${done.length}</h2><ul class="list">${done.map(x=>todoItem(x)).join("")}</ul></div>`:""}
+  <div class="card"><h2>Forslag</h2>
+    <div class="chips">${SUGG.map(c=>`<button class="chip ${c[0]===cat[0]?"on":""}" data-act="scat" data-v="${c[0]}">${c[0]}</button>`).join("")}</div>
+    <div class="chips" style="margin-top:12px">${cat[1].filter(([t])=>!have.has(t.toLowerCase())).map(([t,r])=>`<button class="chip" data-act="tsugg" data-v="${esc(t)}" data-r="${r||""}">+ ${esc(t)}${r?` <span class="muted small">↻</span>`:""}</button>`).join("")||`<span class="hint">Alt herfra er allerede på lista.</span>`}</div>
+    <p class="hint">↻ betyr at den kommer tilbake av seg selv. Legges til ${U.tdue==="today"?"i dag":U.tdue==="tomorrow"?"i morgen":"denne uka"}.</p></div>`;
+  return html+foot();
+}
+
 /* ---------- SØNDAG ---------- */
 const DRINK_DAYS=["0","1","2","3","4","5+"];
 const COMPARE=[["en kinobillett",150],["en pizza levert på døra",250],["en helgetur til Barcelona",4000],["et par gode loafers",3500],["en skreddersydd dress",15000]];
 function vSunday(){
-  const ws=U.week,wk=iso(ws),isCur=wk===iso(monday(today()));
+  const ws0=U.week,ws=U.week,wk=iso(ws),isCur=wk===iso(monday(today()));
   const w=S.weeks[wk]||(S.weeks[wk]={});
   if(isCur&&!w.opened){w.opened=true;save();}
   const sess=sessIn(ws,addDays(ws,7)),prev=sessIn(addDays(ws,-7),ws),tm=sumMin(sess),pm=sumMin(prev);
@@ -390,8 +494,15 @@ function vSunday(){
   <div class="card"><h2>Ukas dager</h2>${(()=>{const ds=[];for(let i=0;i<7;i++){const x=S.days[iso(addDays(ws,i))];if(x)ds.push(x);}
       const g=ds.reduce((t,x)=>t+(x.goals||[]).length,0),gd=ds.reduce((t,x)=>t+(x.goals||[]).filter(y=>y.done).length,0),mo=ds.filter(x=>x.mood),am=ds.filter(x=>x.sleep||x.energyAm||(x.goals||[]).length).length,pm=ds.filter(x=>x.mood||x.energyPm||x.win).length;
       const wins=ds.map(x=>x.win).filter(Boolean).slice(-3);
-      if(!am&&!pm)return `<p class="hint" style="margin-top:0">Ingen dager logget denne uka. Fanen I dag tar to minutter morgen og kveld.</p>`;
+      if(!am&&!pm)return `<p class="hint" style="margin-top:0">Ingen morgen- eller kveldslogg denne uka. Fanen I dag tar to minutter.</p>`;
       return `<div class="stats"><div class="stat"><b>${gd}/${g}</b><span>mål nådd</span></div><div class="stat"><b>${mo.length?(mo.reduce((t,x)=>t+x.mood,0)/mo.length).toFixed(1).replace(".",","):"–"}</b><span>humør i snitt</span></div><div class="stat"><b>${am}+${pm}</b><span>morgen + kveld</span></div></div>${wins.length?`<p class="small" style="margin:12px 0 4px"><b>Ukas høydepunkter</b></p><ul class="tips" style="margin-top:0">${wins.map(w=>`<li>${esc(w)}</li>`).join("")}</ul>`:""}`;})()}</div>
+  <div class="card"><h2>Ukas trening</h2>${(()=>{const ws=[];for(let i=0;i<7;i++){const k2=iso(addDays(ws0,i));((S.days[k2]||{}).workouts||[]).forEach(w=>ws.push(w));}
+      if(!ws.length)return `<p class="hint" style="margin-top:0">Ingen økter logget denne uka.</p>`;
+      const km=ws.reduce((t,w)=>t+(w.km||0),0),up=ws.filter(w=>w.vs==="tyngre").length,gr={};ws.forEach(w=>(w.groups||[]).forEach(g=>gr[g]=(gr[g]||0)+1));
+      const wat=[],eat=[];for(let i=0;i<7;i++){const x=S.days[iso(addDays(ws0,i))]||{};if(typeof x.water==="number")wat.push(x.water);if(typeof x.eat==="number")eat.push(x.eat);}
+      return `<div class="stats"><div class="stat"><b>${ws.length}</b><span>økter</span></div><div class="stat"><b>${km?kmTxt(km):"–"}</b><span>km</span></div><div class="stat"><b>${up}</b><span>ganger tyngre</span></div></div>
+      ${Object.keys(gr).length?`<p class="hint">Muskelgrupper: ${Object.entries(gr).sort((a,b)=>b[1]-a[1]).map(([g,n])=>g+(n>1?" ×"+n:"")).join(", ")}.</p>`:""}
+      ${wat.length?`<p class="hint">Nok vann ${wat.filter(x=>x===2).length} av ${wat.length} dager. Spiste passe eller mer ${eat.filter(x=>x>=1).length} av ${eat.length} dager.</p>`:""}`;})()}</div>
   <div class="card"><h2>Hvordan var uka?</h2>${scale("mood",w.mood,["Tung","Grei","Fin","God","Topp"])}
     <h2 style="margin-top:16px">Stressnivå</h2>${scale("stress",w.stress,["Zen","Lavt","Middels","Høyt","Kaos"])}</div>`;
   /* 18+ */
@@ -488,6 +599,35 @@ document.addEventListener("click",e=>{
   if(a==="tab"){U.view=v;U.drill=null;render();window.scrollTo(0,0);return;}
   if(a==="settings"){settings();return;}
   if(a==="close"){close();return;}
+  /* studie-deler */
+  if(a==="spart"){U.spart=v;U.drill=null;render();return;}
+  /* huske */
+  if(a==="tdue"){U.tdue=v;render();return;}
+  if(a==="trep"){U.trep=v||null;render();return;}
+  if(a==="scat"){U.scat=v;render();return;}
+  if(a==="tadd"){const i=document.getElementById("tIn"),t=i&&i.value.trim();if(!t){toast("Skriv noe å huske først");return;}addTodo(t,U.trep);U.tdraft="";render();const n=document.getElementById("tIn");if(n)n.focus();return;}
+  if(a==="tsugg"){addTodo(v,b.dataset.r||null);render();toast(`«${v}» er lagt til`);return;}
+  if(a==="tdel"){S.todos=S.todos.filter(x=>x.id!==v);save();render();return;}
+  if(a==="tdone"){const x=S.todos.find(y=>y.id===v);if(!x)return;const tk=iso(today());x.done=!x.done;
+    if(x.done){x.doneAt=tk;if(x.repeat&&!x.next){const base=x.due>tk?parse(x.due):today(),nid=uid();S.todos.push({id:nid,t:x.t,due:iso(addDays(base,REPDAYS[x.repeat])),repeat:x.repeat,done:false});x.next=nid;}}
+    else{delete x.doneAt;if(x.next){S.todos=S.todos.filter(y=>!(y.id===x.next&&!y.done));delete x.next;}}
+    save();render();if(x.done&&!S.todos.some(y=>!y.done&&y.due<=tk))toast("Alt husket for i dag. Stilig.");return;}
+  /* trening */
+  if(a==="wnew"){U.wk={type:null,groups:[],feel:null,vs:null,km:"",min:"",note:""};wForm();return;}
+  if(a==="wedit"){const d=dayData(iso(U.day)),o=(d.workouts||[]).find(x=>x.id===v);if(!o)return;
+    U.wk={editId:o.id,id:o.id,created:o.created,type:o.type,groups:(o.groups||[]).slice(),feel:o.feel||null,vs:o.vs||null,km:o.km?String(o.km).replace(".",","):"",min:o.min?String(o.min):"",note:o.note||""};wForm();return;}
+  if(a==="wtype"){U.wk.type=v;wForm();return;}
+  if(a==="wgroup"){const g=U.wk.groups,i=g.indexOf(v);i>=0?g.splice(i,1):g.push(v);wForm();return;}
+  if(a==="wfeel"){U.wk.feel=U.wk.feel===+v?null:+v;wForm();return;}
+  if(a==="wvs"){U.wk.vs=U.wk.vs===v?null:v;wForm();return;}
+  if(a==="wsave"){const w=U.wk;if(!w.type)return;const d=dayData(iso(U.day));d.workouts=d.workouts||[];
+    const o={id:w.editId||uid(),created:w.created||Date.now(),type:w.type,feel:w.feel||null,note:(w.note||"").trim(),min:num(w.min)};
+    if(w.type==="Styrke"){o.groups=w.groups.slice();o.vs=w.vs||null;}
+    if(CARDIO.includes(w.type))o.km=num(w.km);
+    const ix=w.editId?d.workouts.findIndex(x=>x.id===w.editId):-1;if(ix>=0)d.workouts[ix]=o;else d.workouts.push(o);save();close();render();
+    toast(ix>=0?"Økta er oppdatert.":o.vs==="tyngre"?"Tyngre enn sist. Det er fremgang.":"Økt lagret. Stilig.");return;}
+  if(a==="wdel"){const d=dayData(iso(U.day));d.workouts=(d.workouts||[]).filter(w=>w.id!==v);save();render();return;}
+  if(a==="dpick"){const d=dayData(iso(U.day)),f=b.dataset.f,n=+v;d[f]=d[f]===n?undefined:n;save();render();return;}
   /* i dag */
   if(a==="part"){U.part=v;render();window.scrollTo(0,0);return;}
   if(a==="day"){const n=addDays(U.day,+v);if(n<=today()){U.day=n;U.part=null;render();}return;}
@@ -554,10 +694,14 @@ document.addEventListener("click",e=>{
   if(a==="wipe"){S=blank();save();close();U.view="today";render();toast("Alt er slettet");return;}
 });
 document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")close();});
+document.addEventListener("input",e=>{if(e.target.id==="tIn")U.tdraft=e.target.value;});
+document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.id==="tIn"){const b=document.querySelector('[data-act="tadd"]');if(b)b.click();}});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")close();if(e.key==="Enter"&&e.target.id==="gIn"){const b=document.querySelector('[data-act="gadd"]');if(b)b.click();}});
+document.addEventListener("input",e=>{const el=e.target;if(el.dataset&&el.dataset.wbind&&U.wk){U.wk[el.dataset.wbind]=el.value;}});
 document.addEventListener("input",e=>{const el=e.target;if(el.dataset&&el.dataset.dbind){dayData(iso(U.day))[el.dataset.dbind]=el.value;save();}});
 document.addEventListener("input",e=>{const el=e.target;if(el.dataset&&el.dataset.bind==="spent"){S.weeks[iso(U.week)].spent=el.value;save();clearTimeout(window._sp);window._sp=setTimeout(render,900);}});
 document.addEventListener("change",e=>{if(e.target.id==="impFile"&&e.target.files&&e.target.files[0]){const r=new FileReader();r.onload=()=>doImport(String(r.result));r.readAsText(e.target.files[0]);}});
+{const lim=iso(addDays(today(),-14));S.todos=(S.todos||[]).filter(x=>!x.done||(x.doneAt||"")>=lim);}
 try{const t=localStorage.getItem(KEY+".theme");if(t&&t!=="auto")document.documentElement.setAttribute("data-theme",t);}catch(e){}
 
 /* ---------- oppdateringssjekk ---------- */
