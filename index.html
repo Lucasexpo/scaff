@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="app-version" content="3.0">
+<meta name="app-version" content="3.2">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -16,6 +16,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400&display=swap" rel="stylesheet">
 <title>Scaff</title>
+<meta name="description" content="Struktur, med stil. Dagslogg, studie, trening og jobb i én app. Gratis, ingen konto.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Scaff">
+<meta property="og:title" content="Scaff · Struktur, med stil.">
+<meta property="og:description" content="Dagslogg, studie, trening og jobb i én app. Gratis, ingen konto.">
+<meta property="og:url" content="https://lucasexpo.github.io/scaff/">
+<meta property="og:image" content="https://lucasexpo.github.io/scaff/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Scaff-monogrammet på racinggrønt">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lucasexpo.github.io/scaff/og-image.png">
 <style>
 :root{
   --bg:#EFE8DC; --card:#F8F4EC; --ink:#1F2A36; --muted:#6F6A62; --line:#DDD3C2;
@@ -130,8 +142,8 @@ nav.tabs{transform:translateZ(0)}
 h1{font-family:var(--serif);font-weight:400;font-size:34px;letter-spacing:0;line-height:1.05}
 .brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:500;font-size:17px;letter-spacing:.32em;text-transform:uppercase}
 .brand svg{width:34px;height:34px;flex:none}
-.tag{font-family:var(--serif);font-style:italic;font-size:14px;letter-spacing:0;margin-top:2px}
-.sub{font-family:var(--serif);font-style:italic;font-size:17px}
+.tag{font-family:var(--serif);font-style:normal;font-size:14px;letter-spacing:0;margin-top:2px}
+.sub{font-family:var(--serif);font-style:normal;font-size:17px}
 .card{border-radius:8px}
 .card h2{font-size:12px;letter-spacing:.18em;font-weight:600}
 .big,.timer,.stat b,.step .v{font-family:var(--serif);font-weight:500;letter-spacing:0}
@@ -141,26 +153,26 @@ h1{font-family:var(--serif);font-weight:400;font-size:34px;letter-spacing:0;line
 .chip{border-radius:6px}
 .scale button{border-radius:6px;font-family:var(--serif);font-weight:500;font-size:18px}
 .scale button.on{color:var(--acc-ink)}
-.quip{font-family:var(--serif);font-style:italic;font-size:17px}
+.quip{font-family:var(--serif);font-style:normal;font-size:17px}
 .flash{border-radius:8px;font-family:var(--serif);font-weight:500;font-size:24px}
 .money .big{color:var(--wine)}
 .money,.challenge,.banner,.gate{border-radius:8px}
 .modal .sheet{border-radius:12px}
 .modal h3{font-family:var(--serif);font-weight:400;font-size:28px}
-.toast{border-radius:6px;font-family:var(--serif);font-style:italic}
+.toast{border-radius:6px;font-family:var(--serif);font-style:normal}
 .upd{border-radius:8px}.upd button{border-radius:6px;color:var(--acc-ink)}
 nav.tabs button{letter-spacing:.04em}
-.foot{font-family:var(--serif);font-style:italic;font-size:14px}
+.foot{font-family:var(--serif);font-style:normal;font-size:14px}
 .seal{display:block;margin:6px auto 0;width:88px;height:88px;transform:rotate(-8deg)}
 .sealrow{display:flex;align-items:center;gap:14px;margin-top:12px}
 .sealrow .seal{margin:0;width:64px;height:64px;flex:none}
-.sealrow p{margin:0;font-family:var(--serif);font-style:italic;font-size:17px}
+.sealrow p{margin:0;font-family:var(--serif);font-style:normal;font-size:17px}
 
 .welcome{position:fixed;inset:0;z-index:45;background:var(--acc);color:var(--acc-ink);display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(28px + env(safe-area-inset-top,0px)) 26px calc(28px + env(safe-area-inset-bottom,0px));overflow-y:auto}
 .welcome.open{display:flex}
 .welcome h2{font-family:var(--serif);font-weight:400;font-size:36px;margin:8px 0 6px;line-height:1.08}
 .welcome p{max-width:340px;margin:8px auto 0;font-size:17px;line-height:1.45;opacity:.92}
-.welcome .lead{font-family:var(--serif);font-style:italic;font-size:20px;opacity:1}
+.welcome .lead{font-family:var(--serif);font-style:normal;font-size:20px;opacity:1}
 .welcome .fine{font-size:14px;opacity:.75}
 .wmono{width:124px;height:124px;color:var(--acc-ink);margin-bottom:4px}
 .wseal{width:96px;height:96px;transform:rotate(-8deg);margin-bottom:4px}
@@ -181,6 +193,20 @@ nav.tabs button{letter-spacing:.04em}
 .wdots i.on{background:var(--acc-ink)}
 @keyframes wIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .wstep{animation:wIn .35s ease both;width:100%}
+
+/* ---- 3.2: ingen kursiv, kraftigere tall, tydeligere småskrift ---- */
+*,*::before,*::after{font-style:normal!important}
+.big,.timer,.stat b,.step .v,.scale button,.money .big{font-family:var(--font);font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.big{font-size:42px}.timer{font-size:54px}.stat b{font-size:24px}
+.tag{font-family:var(--font);font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-top:3px}
+.sub{font-family:var(--font);font-size:15px;letter-spacing:.01em}
+.hint,.small{font-size:15px}
+.stat span{font-size:14px}
+.quip{font-family:var(--serif);font-size:18px}
+.foot{font-family:var(--font);font-size:13px}
+.toast{font-family:var(--font);font-weight:600}
+.sealrow p{font-family:var(--serif);font-size:18px}
+.welcome .lead{font-size:21px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
